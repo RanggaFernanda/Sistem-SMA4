@@ -47,6 +47,7 @@
                 <select class="form-control" id="role" name="role">
                   <option>Administrator</option>
                   <option>Pembina</option>
+                  <option>Siswa</option>
                 </select>
               </div>
               </div>

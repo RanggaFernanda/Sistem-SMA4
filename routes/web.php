@@ -52,7 +52,7 @@ Route::middleware(['auth', 'ceklevel:Siswa,Administrator,Pembina'])->group(funct
     Route::post('laporan/select', [LaporanController::class, 'getData'])->name('laporan.select');
 });
 
-Route::middleware(['auth', 'ceklevel:Administrator'])->group(function () {
+Route::middleware(['auth', 'ceklevel:Administrator,Pembina'])->group(function () {
     Route::resource('/dataekskul', DataekskulController::class);
     Route::resource('/datapembina', DatapembinaController::class);
     

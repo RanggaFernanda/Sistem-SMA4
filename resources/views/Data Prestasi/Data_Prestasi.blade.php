@@ -102,17 +102,7 @@
           </div>
           @endforeach
         </tbody>
-        <tfoot>
-        <tr>
-            <th>No</th>
-            <th>Prestasi</th>
-            <th>Nama Lomba</th>
-            <th>Cabang Lomba</th>
-            <th>Pelaksanaan Lomba</th>
-            <th>Foto Kegiatan</th>
-            <th>Action</th>
-        </tr>
-        </tfoot>
+
       </table>
     </div>
     <!-- /.card-body -->
