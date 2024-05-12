@@ -17,8 +17,10 @@ class CreateDataekskulsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('kode_ekskul');
+            // $table->string('kode_ekskul');
             $table->string('nama_ekskul');
+            $table->enum('kategori_ekskul',['akademik', 'non-akademik']);
+            $table->dateTime('jadwal_ekskul');
             $table->timestamps();
         });
     }

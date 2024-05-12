@@ -15,19 +15,46 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
+        // Seed admin user
         DB::table('users')->insert([
-            [
-                'name' => 'Admin.',
-                'email' => 'admin@gmail.com',
-                'password' => Hash::make('12345678'),
-            ],
-            [
-                'name' => 'Ade Sunandar, S.Pd.',
-                'email' => 'pembina@gmail.com',
-                'password' => Hash::make('12345678'),
-            ]
+            'name' => 'Admin',
+            'email' => 'admin@example.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'), // You can change 'password' to the desired admin password
+            'role' => 'Administrator',
+            'jbtn_pelatih' => null,
+            'foto_profil' => null,
+            'alamat' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // Seed pembina user
+        DB::table('users')->insert([
+            'name' => 'Pembina',
+            'email' => 'pembina@example.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'), // You can change 'password' to the desired pembina password
+            'role' => 'Pembina',
+            'jbtn_pelatih' => null,
+            'foto_profil' => null,
+            'alamat' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // Seed siswa user
+        DB::table('users')->insert([
+            'name' => 'Siswa',
+            'email' => 'siswa@example.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'), // You can change 'password' to the desired siswa password
+            'role' => 'Siswa',
+            'jbtn_pelatih' => null,
+            'foto_profil' => null,
+            'alamat' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 }

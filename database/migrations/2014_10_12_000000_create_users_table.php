@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('role')->nullable();
+            $table->enum('role', ['Administrator', 'Pembina', 'Siswa'])->default('Siswa');
             $table->string('jbtn_pelatih')->nullable();
             $table->string('foto_profil')->nullable();
             $table->string('alamat')->nullable();

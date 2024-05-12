@@ -40,14 +40,20 @@ class DataekskulController extends Controller
         $request->validate([
             'kode_ekskul'=>'required|unique:dataekskuls|min:2|max:4',
             'nama_ekskul'=>'required',
+            'kategori_ekskul'=>'required',
+            'jadwal_ekskul'=>'required',
+
+
         ]);
 
         // DataEkskul::create($request->all());
 
         $dataekskul= New Dataekskul;
         $dataekskul->user_id=Auth::user()->id;
-        $dataekskul->kode_ekskul=$request->get('kode_ekskul');
+        
         $dataekskul->nama_ekskul=$request->get('nama_ekskul');
+        $dataekskul->kategori_ekskul=$request->get('ketegori_ekskul');
+        $dataekskul->jadwal_ekskul=$request->get('jadwal_ekskul');
         $dataekskul->save();
         
         return redirect()->route('dataekskul.index')->with('success', 'Alhamdulillah Berhasil Dibuat');
@@ -87,8 +93,10 @@ class DataekskulController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'kode_ekskul'=>'required|unique:dataekskuls|min:2|max:4',
+            // 'kode_ekskul'=>'required|unique:dataekskuls|min:2|max:4',
             'nama_ekskul'=>'required',
+            'kategori_ekskul' =>'required',
+            'jadwal_ekskul' =>'required',
         ]);
         Dataekskul::find($id)
             ->update($request->all());

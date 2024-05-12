@@ -11,7 +11,7 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        {{-- <img src="{{ asset('fotoprofil/'. Auth()->user()->foto_profil) }}" class="img-circle elevation-2" alt="User Image"> --}}
+        <img src="{{ asset('fotoprofil/'. Auth()->user()->foto_profil) }}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
         <a href="{{ route('user.profile', Auth::user()->id) }}" >
@@ -33,7 +33,7 @@
             </p>
           </a>
         </li>
-        <li class="nav-item has-treeview"> 
+        {{-- <li class="nav-item has-treeview"> 
           @if (Auth()->user()->role == 'Administrator')       
           <a href="#" class="nav-link {{ (request()->is('dataekskul*', 'datapembina*')) ? 'active' : '' }}">
             <i class="fas fa-server"></i>
@@ -65,14 +65,14 @@
             <i class="fas fa-calendar-alt"></i>
             <p>Data Pengumuman</p>
           </a>
-        </li>
+        </li> --}}
         <li class="nav-item">
-          <a href="{{ route('dataprestasi.index') }}" class="nav-link {{ (request()->is('dataprestasi*')) ? 'active' : '' }}">
+          <a href="{{ route('dataekskul.index') }}" class="nav-link {{ (request()->is('dataekskul*')) ? 'active' : '' }}">
             <i class="fas fa-trophy"></i>
             <p>Ekstrakulikuler </p>
           </a>
         </li>
-        <li class="nav-item has-treeview">        
+        {{-- <li class="nav-item has-treeview">        
           <a href="#" class="nav-link {{ (request()->is('datalatihan*')) ? 'active' : '' }}">
             <i class="fas fa-running"></i>
             <p>
@@ -97,6 +97,18 @@
               </a>
             </li>
           </ul>
+        </li> --}}
+        <li class="nav-item">
+          <a href="{{ route('laporan.index') }}" class="nav-link {{ (request()->is('laporan*')) ? 'active' : '' }}">
+            <i class="fas fa-trophy"></i>
+            <p>Laporan Kegiatan </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('dataprestasi.index') }}" class="nav-link {{ (request()->is('dataprestasi*')) ? 'active' : '' }}">
+            <i class="fas fa-trophy"></i>
+            <p>Pembina </p>
+          </a>
         </li>
         <li class="nav-header">PENGATURAN</li>
         <li class="nav-item">

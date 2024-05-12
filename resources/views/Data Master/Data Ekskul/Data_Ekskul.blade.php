@@ -8,13 +8,22 @@
 <div class="row">
 <div class="col-12">
 <div class="card">
-  @error('kode_ekskul')
+  {{-- @error('kode_ekskul')
   <div class="alert alert-danger">{{ $message }}</div>
-  @enderror
+  @enderror --}}
 
   @error('nama_ekskul')
   <div class="alert alert-danger">{{ $message }}</div>
   @enderror
+
+  @error('kategori_ekskul')
+  <div class="alert alert-danger">{{ $message }}</div>
+  @enderror
+
+  @error('jadwal_ekskul')
+  <div class="alert alert-danger">{{ $message }}</div>
+  @enderror
+
     <div class="card-header">
       <h3 class="card-title">Data Seluruh Ekstrakurikuler</h3>
       <div class="card-tools">
@@ -27,8 +36,9 @@
         <thead>
         <tr>
           <th>No</th>
-          <th>Kode Ekskul</th>
           <th>Nama Ekskul</th>
+          <th>Kategori</th>
+          <th>Jadwal</th>
           <th>Action</th>
         </tr>
         </thead>
@@ -36,8 +46,10 @@
           @foreach ($dtekskul as $dt_eks)
           <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{$dt_eks->kode_ekskul}}</td>
+            {{-- <td>{{$dt_eks->kode_ekskul}}</td> --}}
             <td>{{$dt_eks->nama_ekskul}}</td>
+            <td>{{$dt_eks->kategori}}</td>
+            <td>{{$dt_eks->jadwal}}</td>
             <td>
               <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#_detail-{{$dt_eks->id}}"><i class="fas fa-eye"></i> Detail</a>
               <a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#_edit-{{$dt_eks->id}}"><i class="fas fa-edit"></i> Edit</a>
@@ -88,11 +100,22 @@
                         @method("PUT")
                         @csrf
                         <div class="card-body">
-                          <label for="kodeEkskul">Kode Ekstrakurikuler</label>
+                          {{-- <label for="kodeEkskul">Kode Ekstrakurikuler</label>
                           <input class="form-control" type="text" id="kodeekskul" name="kode_ekskul" placeholder="Masukan Kode Ekskul" value="{{ old('kode_ekskul', $dt_eks->kode_ekskul)}}">
-                          <br>
+                          <br> --}}
                           <label for="namaEkskul">Nama Ekstrakurikuler</label>
-                          <input class="form-control" type="text" id="kodeekskul" name="nama_ekskul" placeholder="Masukan Nama Ekskul" value="{{ old('nama_ekskul', $dt_eks->nama_ekskul)}}">
+                          <input class="form-control" type="text" id="id" name="nama_ekskul" placeholder="Masukan Nama Ekskul" value="{{ old('nama_ekskul', $dt_eks->nama_ekskul)}}">
+                        </div>
+                        {{-- <label for="kategoriEkskul">Kategori</label> --}}
+                          {{-- <input class="form-control" type="text" id="id" name="kategori_ekskul" placeholder="Masukan Nama Ekskul" value="{{ old('kategori_ekskul', $dt_eks->kategori_ekskul)}}"> --}}
+                          <label for="kategoriEkskul">Kategori</label>
+                        <select class="form-control" id="id" name="kategori_ekskul">
+                          <option value="akademik" {{ (old('kategori_ekskul', $dt_eks->kategori_ekskul) == 'akademik') ? 'selected' : '' }}>Akademik</option>
+                          <option value="non-akademik" {{ (old('kategori_ekskul', $dt_eks->kategori_ekskul) == 'non-akademik') ? 'selected' : '' }}>Non-Akademik</option>
+                        </select>
+                        </div>
+                        <label for="namaEkskul">Jadwal</label>
+                          <input class="form-control" type="text" id="kodeekskul" name="jadwal_ekskul" placeholder="Masukan Nama Ekskul" value="{{ old('jadwal_ekskul', $dt_eks->jadwal_ekskul)}}">
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -122,10 +145,14 @@
                           @csrf
                           <div class="card-body">
                             <dl class="row">
-                              <dt class="col-sm-4">Kode Ekskul  :</dt>
-                              <dd class="col-sm-8">{{$dt_eks->kode_ekskul}}</dd>
-                              <dt class="col-sm-4">Nama Ekskul  :</dt>
+                              {{-- <dt class="col-sm-4">Kode Ekskul  :</dt>
+                              <dd class="col-sm-8">{{$dt_eks->kode_ekskul}}</dd> --}}
+                              <dt class="col-sm-4">Nama Ekskul</dt>
                               <dd class="col-sm-8">{{$dt_eks->nama_ekskul}}</dd>
+                              <dt class="col-sm-4">Kategori</dt>
+                              <dd class="col-sm-8">{{$dt_eks->kategori_ekskul}}</dd>
+                              <dt class="col-sm-4">Jadwal Ekskul</dt>
+                              <dd class="col-sm-8">{{$dt_eks->jadwal_ekskul}}</dd>
                           </div>
                       </div>
                       <div class="modal-footer justify-content-between">
@@ -139,14 +166,14 @@
                 </div>
           @endforeach
         </tbody>
-        <tfoot>
+        {{-- <tfoot>
         <tr>
           <th>No</th>
           <th>Kode Ekskul</th>
           <th>Nama Ekskul</th>
           <th>Action</th>
         </tr>
-        </tfoot>
+        </tfoot> --}}
       </table>
     </div>
     <!-- /.card-body -->
@@ -169,15 +196,20 @@
         <form method="POST" action="{{ action('App\Http\Controllers\DataekskulController@store')}}">
           @csrf
           <div class="card-body">
-            <label for="kodeEkskul">Kode Ekstrakurikuler</label>
+            {{-- <label for="kodeEkskul">Kode Ekstrakurikuler</label>
             <input class="form-control" type="text" id="kodeekskul" name="kode_ekskul" class="@error('kode_ekskul') is-invalid @enderror" placeholder="Masukan Kode Ekskul">
-            <br>
+            <br> --}}
             <label for="namaEkskul">Nama Ekstrakurikuler</label>
-            <input class="form-control" type="text" id="kodeekskul" name="nama_ekskul" class="@error('nama_ekskul') is-invalid @enderror" placeholder="Masukan Nama Ekskul">
+            <input class="form-control" type="text" id="id" name="nama_ekskul" class="@error('nama_ekskul') is-invalid @enderror" placeholder="Masukan Nama Ekskul">
+            <br>
+            <label for="KategoriEkskul">Kategori</label>
+            <input class="form-control" type="text" id="id" name="kategori_ekskul" class="@error('kategori_ekskul') is-invalid @enderror" placeholder="Masukan Kategori Ekskul">
+            <br>
+            <label for="JadwalEkskul" >Jadwal</label>
+            <input class="form-control" type="text" id="id" name= "jadwal_ekskul" class="@error('jadwal_ekskul') is-invalid @enderror" placeholder="Masukan Jadwal Ekskul">
           </div>
       </div>
       <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
         <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</button>
         </form>
       </div>

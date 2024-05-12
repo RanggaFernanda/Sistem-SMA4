@@ -34,7 +34,7 @@ Route::get('/show/{id}', [FrontendController::class, 'show']);
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware(['auth', 'ceklevel:Administrator,Pembina'])->group(function () {
+Route::middleware(['auth', 'ceklevel:Siswa,Administrator,Pembina'])->group(function () {
     Route::resource('/dataevent', DataeventController::class);
     Route::resource('/dataprestasi', DataprestasiController::class);
     Route::resource('/datalatihan', DatalatihanController::class);

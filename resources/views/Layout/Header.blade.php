@@ -27,9 +27,9 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <a href="{{ route('user.profile', Auth::user()->id) }}" class="d-block">{{ Auth()->user()->name }}</a>
+      {{-- <a href="{{ route('user.profile', Auth::user()->id) }}" class="d-block">{{ Auth()->user()->name }}</a> --}}
       <div class="image">
-        <img src="{{ asset('fotoprofl/'. Auth()->user()->foto_profil) }}" class="" alt="image">
+        {{-- <img src="{{ asset('fotoprofl/'. Auth()->user()->foto_profil) }}" class="" alt="image"> --}}
       </div>
       
 
@@ -119,11 +119,11 @@
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
       </li> --}}
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
         </a>
-      </li>
+      </li> --}}
     </ul>
   </nav>
   <!-- /.navbar -->
