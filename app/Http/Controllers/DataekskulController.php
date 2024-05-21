@@ -17,6 +17,7 @@ class DataekskulController extends Controller
     {
         $dtekskul = Dataekskul::all();
         return view('Data Master.Data Ekskul.Data_Ekskul', compact('dtekskul'));
+        // dd($dtekskul);
     }
 
     /**
@@ -37,24 +38,25 @@ class DataekskulController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'kode_ekskul'=>'required|unique:dataekskuls|min:2|max:4',
-            'nama_ekskul'=>'required',
-            'kategori_ekskul'=>'required',
-            'jadwal_ekskul'=>'required',
+        // $request->validate([
+        //   // 'kode_ekskul'=>'required|unique:dataekskuls|min:2|max:4',
+        //     'nama_ekskul'=>'required',
+        //     'kategori_ekskul'=>'required',
+        //     'jadwal_ekskul'=>'required',
 
 
-        ]);
+        // ]);
+        // dd($request);
 
-        // DataEkskul::create($request->all());
+        DataEkskul::create($request->all());
 
-        $dataekskul= New Dataekskul;
-        $dataekskul->user_id=Auth::user()->id;
+        // $dataekskul= New Dataekskul;
+        // $dataekskul->user_id=Auth::user()->id;
         
-        $dataekskul->nama_ekskul=$request->get('nama_ekskul');
-        $dataekskul->kategori_ekskul=$request->get('ketegori_ekskul');
-        $dataekskul->jadwal_ekskul=$request->get('jadwal_ekskul');
-        $dataekskul->save();
+        // $dataekskul->nama_ekskul=$request->get('nama_ekskul');
+        // $dataekskul->kategori_ekskul=$request->get('ketegori_ekskul');
+        // $dataekskul->jadwal_ekskul=$request->get('jadwal_ekskul');
+        // $dataekskul->save();
         
         return redirect()->route('dataekskul.index')->with('success', 'Alhamdulillah Berhasil Dibuat');
     }
@@ -96,12 +98,12 @@ class DataekskulController extends Controller
             // 'kode_ekskul'=>'required|unique:dataekskuls|min:2|max:4',
             'nama_ekskul'=>'required',
             'kategori_ekskul' =>'required',
-            'jadwal_ekskul' =>'required',
+            'pelatih_ekskul' =>'required',
         ]);
         Dataekskul::find($id)
             ->update($request->all());
         
-        return redirect()->back()->with('success', 'Alhamdulillah Berhasil Diupdate');
+        return redirect()->back()->with('success', 'Berhasil Diupdate');
     }
 
     /**

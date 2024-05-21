@@ -2,85 +2,61 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Dataekskul;
 use Illuminate\Http\Request;
+use App\Models\DataPembina;
+use RealRashid\SweetAlert\Facades\Alert;
 
-class DatapembinaController extends Controller
+class DataPembinaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $dtpembina = User::all();
-        return view('Data Pembina.Data_Pembina', compact('dtpembina'));
+        $dtpembina = DataPembina::all();
+        $dtekskul = Dataekskul::all(); // Assuming you have an Ekstrakulikuler model
+        return view('Data Pembina.Data_Pembina', compact('dtpembina', 'dtekskul'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_pembina' => 'required|string|max:255',
+            'nip_pembina' => 'required|string|max:255',
+            'email_pembina' => 'required|email|max:255',
+            'tugas_pembina' => 'required|string|max:255',
+            'jeniskelamin_pembina' => 'required|string|max:10',
+            'ekstrakulikuler_pembina' => 'required|string|max:255',
+        ]);
+
+        DataPembina::create($request->all());
+
+        Alert::success('Success', 'Data Pembina berhasil ditambahkan');
+        return redirect()->route('datapembina.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_pembina' => 'required|string|max:255',
+            'nip_pembina' => 'required|string|max:255',
+            'email_pembina' => 'required|email|max:255',
+            'tugas_pembina' => 'required|string|max:255',
+            'jeniskelamin_pembina' => 'required|string|max:10',
+            'ekstrakulikuler_pembina' => 'required|string|max:255',
+        ]);
+
+        $dtpembina = DataPembina::findOrFail($id);
+        $dtpembina->update($request->all());
+
+        Alert::success('Success', 'Data Pembina berhasil diperbarui');
+        return redirect()->route('datapembina.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $dtpembina = DataPembina::findOrFail($id);
+        $dtpembina->delete();
+
+        Alert::success('Success', 'Data Pembina berhasil dihapus');
+        return redirect()->route('datapembina.index');
     }
 }

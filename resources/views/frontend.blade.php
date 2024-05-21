@@ -103,7 +103,7 @@
       <div class="container-fluid venue-gallery-container" data-aos="fade-up" data-aos-delay="100">
         <div class="row g-0">
 
-          <div class="col-lg-3 col-md-4">
+          {{-- <div class="col-lg-3 col-md-4">
             <div class="venue-gallery">
               <a href="{{ asset('Frontend') }}/assets/img/venue-gallery/1.jpg" class="glightbox" data-gall="venue-gallery">
                 <img src="{{ asset('Frontend') }}/assets/img/venue-gallery/1.jpg" alt="" class="img-fluid">
@@ -165,7 +165,7 @@
                 <img src="{{ asset('Frontend') }}/assets/img/venue-gallery/8.jpg" alt="" class="img-fluid">
               </a>
             </div>
-          </div>
+          </div> --}}
 
         </div>
       </div>

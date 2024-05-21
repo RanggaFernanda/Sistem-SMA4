@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'MenskulApp') }}</title>
+    <title>{{ config('app.name', 'EkstraSmapa') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -47,9 +47,9 @@
                             @endif
 
                             @if (Route::has('register'))
-                                {{-- <li class="nav-item">
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li> --}}
+                                </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">

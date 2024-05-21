@@ -16,13 +16,15 @@ class DataprestasiController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->role == 'Administrator') {
+        // if (Auth::user()->role == 'Administrator') {
             $dtevent = Dataevent::All();
             return view('Data Prestasi.Data_Prestasi', compact('dtevent'));
-        } else {
-            $dtevent = Dataevent::where('user_id', auth()->user()->id)->get();
-            return view('Data Prestasi.Data_Prestasi', compact('dtevent'));
-        }
+        // } else {
+        //     $dtevent = Dataevent::where('user_id', auth()->user()->id)->get();
+        //     // dd($dtevent);
+        //     return view('Data Prestasi.Data_Prestasi', compact('dtevent'));
+        // }
+        // dd($dtevent);
     }
 
     /**

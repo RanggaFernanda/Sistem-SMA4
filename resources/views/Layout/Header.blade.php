@@ -6,7 +6,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="/" class="nav-link">Home</a>
       </li>
       {{-- <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -31,7 +31,45 @@
       <div class="image">
         {{-- <img src="{{ asset('fotoprofl/'. Auth()->user()->foto_profil) }}" class="" alt="image"> --}}
       </div>
+      {{-- <li class="nav-item">
+        <a href="{{ route('user.profile', Auth::user()->id) }}" class="nav-link {{ (request()->is('user*')) ? 'active' : '' }}">
+          <i class="fas fa-user-friends"></i> <p>Profil Saya</p> </a>
+      <li class="nav-item"> --}}
       
+    {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button> --}}
+        {{-- <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="{{ route('user.profile', Auth::user()->id) }}" class="nav-link {{ request()->is('user*') ? 'active' : '' }}">
+              <i class="fas fa-user-friends"></i> <p class="d-inline">Profil Saya</p>
+          </a>
+      </li> --}}
+
+      <div class="user-panel mt-0 pb-0 mb-0 d-flex">
+        <div class="image">
+          {{-- <img src="{{ asset('fotoprofil/'. Auth()->user()->foto_profil) }}" class="img-circle elevation-9" alt="User Image"> --}}
+  
+          <a href="{{ route('user.profile', Auth::user()->id) }}" >
+        <img src="{{ asset('fotoprofil/'. Auth()->user()->foto_profil) }}" class="rounded-circle shadow-lg" style="width: 35px; height: 35px; object-fit: cover;" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="{{ route('user.profile', Auth::user()->id) }}" >
+          <span class="badge badge-success">{{ Auth()->user()->role }}</span>
+        </div>
+      </div>
+
+      
+
+      
+        {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" onclick="event.preventDefault();
+        document.getElementById('logout-form').submit();" class="nav-link">
+        <button type="button" class="btn btn-danger btn-sm" id="logout-form"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        {{ csrf_field() }}
+        </form>
+      </li>
+      </li> --}}
 
       
       <!-- Messages Dropdown Menu -->

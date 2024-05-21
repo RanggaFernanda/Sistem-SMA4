@@ -19,13 +19,12 @@
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
           </nav><!-- .navbar -->
-          <a class="buy-tickets scrollto" href="/login">LOGIN</a>
+          <a class="buy-tickets scrollto" href="/login">Login</a>
           @endif
 
           @if (Route::has('register'))
-              {{-- <li class="nav-item">
-                  <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-              </li> --}}
+         <a class="buy-tickets scrollto" href="{{ route('register') }}">{{ __('Register') }}</a>
+              </li>
           @endif
       @else
       <li><a class="nav-link scrollto active" href="{{ route('user.profile', Auth::user()->id) }}">{{ Auth::user()->name }}</a></li>
@@ -34,7 +33,7 @@
           </nav><!-- .navbar -->
           <form id="logout-form" action="{{ route('logout') }}" method="POST" onclick="event.preventDefault();
           document.getElementById('logout-form').submit();" class="nav-link">
-          <a class="buy-tickets scrollto" href="/logout">LOGOUT</a>
+          <a class="buy-tickets scrollto" href="/logout">Logout</a>
           {{ csrf_field() }}
           </form>
       @endguest

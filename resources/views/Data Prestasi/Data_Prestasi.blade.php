@@ -14,7 +14,7 @@
   <div class="alert alert-danger">{{ $message }}</div>
   @enderror
     <div class="card-header">
-      <h3 class="card-title">Data Seluruh Ekstrakurikuler</h3>
+      <h3 class="card-title">Data Ekskul Berprestasi</h3>
       <div class="card-tools">
         <a href="#" class="btn btn-success btn-sm"><i class="fas fa-file-excel" title="Download Excel"></i> Export Excel</a>
       </div>
@@ -35,7 +35,9 @@
         </thead>
         <tbody>
             <tr>
+              {{-- @dd($dtevent) --}}
                 @foreach ($dtevent as $event)
+                {{-- @dd($event) --}}
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $event->status_kegiatan }}</td>
                   <td>{{ $event->nama_kegiatan }}</td>

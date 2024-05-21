@@ -30,7 +30,7 @@
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
+                    <table id= "example1" class="table table-bordered table-striped">
                       <thead>
                         <tr>
                           <th>No</th>
@@ -236,90 +236,126 @@
     <!-- /.row -->
                         
             {{-- Awal Popup untuk tombol tambah --}}
-            <div class="modal fade" id="modal_tambah">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title">Tambah Data Event</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form method="POST" enctype="multipart/form-data" action="{{ action('App\Http\Controllers\DataeventController@store')}}">
-                      @csrf
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col-6">
-                                <label for="statusLomba">Status Lomba</label>
-                                <input type="text" class="form-control" required name="status_kegiatan" placeholder="Masukan Status, Misal: Juara 1">
-                              </div>
-                              <div class="col-6">
-                                <label for="namaLomba">Nama Lomba</label>
-                                <input type="text" class="form-control" required name="nama_kegiatan" placeholder="Masukan Nama Lomba">
-                              </div>
-                              <div class="col-6">
-                                <label for="mulaiEvent">Waktu Mulai Event</label>
-                                <input type="date" class="form-control" name="tanggal_mulai_kegiatan" placeholder="Tanggal Mulai Lomba">
-                              </div>
-                              <div class="col-6">
-                                <label for="akhirEvent">Waktu Berakhir Event</label>
-                                <input type="date" class="form-control" name="tanggal_akhir_kegiatan" placeholder="Tanggal Selesai Lomba">
-                              </div>
-                              <div class="col-6">
-                                <label for="namaPembimbing">Nama Pembimbing</label>
-                                <input type="text" class="form-control" name="nama_pembimbing" placeholder="Nama Pembimbing" readonly value="{{ old('nama_pembimbing', Auth::user()->name) }}">
-                                {{-- <input type="text" class="form-control" name="nama_pembimbing" placeholder="Nama Pembimbing Lomba"> --}}
-                              </div>
-                              <div class="col-6">
-                                <label for="jenisLomba">Jenis Lomba</label>
-                                {{-- <input type="text" class="form-control" name="jenis_lomba" placeholder="Misalkan Bola Voli"> --}}
-                                <select name="jenis_lomba" id="" class="form-control">
-                                  <option value="">-- Pilih Lomba -- </option>
-                                  @foreach ($dtekskul as $item)
-                                    <option value="{{ $item->nama_ekskul }}">{{ $item->nama_ekskul }}</option>
-                                  @endforeach
-                                </select>
-                              </div>
-                              <div class="col-6">
-                                <label for="cabangLomba">Cabang Lomba</label>
-                                <input type="text" class="form-control" name="cabang_lomba" placeholder="Misalkan Bola Voli Putri">
-                              </div>
-                              <div class="col-6">
-                              <label for="penyelenggaraLomba">Penyelenggara Lomba</label>
-                              <input type="text" class="form-control" name="penyelenggara_kegiatan" placeholder="Yang Menyelenggarakan Lomba">
-                            </div>
-                              <div class="col-12">
-                                <label for="fotoLomba">Foto Kegiatan Lomba</label>
-                                <input type="file" class="form-control" name="foto_kegiatan">
-                              </div>
-                              <div class="col-12">
-                                <label for="namaPeserta">Nama Peserta Lomba</label>
-                                <textarea class="textarea" rows="3" name="nama_peserta" placeholder="Nama Peserta Dan Official"></textarea>
-                              </div>
-                              <div class="col-12">
-                                <label for="tempatLomba">Alamat Lomba</label>
-                                <textarea class="form-control" rows="3" name="tempat_kegiatan" placeholder="Alamat Lomba Dilaksanakan"></textarea>
-                              </div>
-                            </div>
+         <!-- Modal Tambah Data Event -->
+<div class="modal fade" id="modal_tambah">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title">Tambah Data Event</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form method="POST" enctype="multipart/form-data" action="{{ action('App\Http\Controllers\DataeventController@store') }}">
+                  @csrf
+                  <div class="card-body">
+                      <div class="row">
+                          <div class="col-6">
+                              <label for="statusLomba">Status Lomba</label>
+                              <input type="text" class="form-control @error('status_kegiatan') is-invalid @enderror" required name="status_kegiatan" placeholder="Masukan Status, Misal: Juara 1">
+                              @error('status_kegiatan')
+                              <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
                           </div>
-                        </div>
-                    <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
-                    <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</button>
-                    </form>
+                          <div class="col-6">
+                              <label for="namaLomba">Nama Lomba</label>
+                              <input type="text" class="form-control @error('nama_kegiatan') is-invalid @enderror" required name="nama_kegiatan" placeholder="Masukan Nama Lomba">
+                              @error('nama_kegiatan')
+                              <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                          </div>
+                          <div class="col-6">
+                              <label for="mulaiEvent">Waktu Mulai Event</label>
+                              <input type="date" class="form-control @error('tanggal_mulai_kegiatan') is-invalid @enderror" name="tanggal_mulai_kegiatan" placeholder="Tanggal Mulai Lomba">
+                              @error('tanggal_mulai_kegiatan')
+                              <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                          </div>
+                          <div class="col-6">
+                              <label for="akhirEvent">Waktu Berakhir Event</label>
+                              <input type="date" class="form-control @error('tanggal_akhir_kegiatan') is-invalid @enderror" name="tanggal_akhir_kegiatan" placeholder="Tanggal Selesai Lomba">
+                              @error('tanggal_akhir_kegiatan')
+                              <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                          </div>
+                          <div class="col-6">
+                              <label for="namaPembimbing">Nama Pembimbing</label>
+                              <input type="text" class="form-control @error('nama_pembimbing') is-invalid @enderror" name="nama_pembimbing" placeholder="Nama Pembimbing">
+                              @error('nama_pembina')
+                              <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                          </div>
+                          <div class="col-6">
+                              <label for="jenisLomba">Jenis Lomba</label>
+                              <select name="jenis_lomba" class="form-control @error('jenis_lomba') is-invalid @enderror">
+                                  <option value="">-- Pilih Lomba --</option>
+                                  @foreach ($dtekskul as $item)
+                                  <option value="{{ $item->nama_ekskul }}">{{ $item->nama_ekskul }}</option>
+                                  @endforeach
+                              </select>
+                              @error('jenis_lomba')
+                              <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                          </div>
+                          <div class="col-6">
+                              <label for="cabangLomba">Cabang Lomba</label>
+                              <input type="text" class="form-control @error('cabang_lomba') is-invalid @enderror" name="cabang_lomba" placeholder="Masukkan cabang olahraga">
+                              @error('cabang_lomba')
+                              <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                          </div>
+                          <div class="col-6">
+                              <label for="penyelenggaraLomba">Penyelenggara Lomba</label>
+                              <input type="text" class="form-control @error('penyelenggara_kegiatan') is-invalid @enderror" name="penyelenggara_kegiatan" placeholder="Yang Menyelenggarakan Lomba">
+                              @error('penyelenggara_kegiatan')
+                              <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                          </div>
+                          <div class="col-6">
+                              <label for="fotoLomba">Foto Kegiatan Lomba</label>
+                              <input type="file" class="form-control @error('foto_kegiatan') is-invalid @enderror" name="foto_kegiatan">
+                              @error('foto_kegiatan')
+                              <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                          </div>
+                          <div class="col-12">
+                              <label for="namaPeserta">Nama Peserta Lomba</label>
+                              <textarea class="form-control @error('nama_peserta') is-invalid @enderror" rows="3" name="nama_peserta" placeholder="Nama Peserta Dan Official"></textarea>
+                              @error('nama_peserta')
+                              <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                          </div>
+                          <div class="col-12">
+                              <label for="tempatLomba">Alamat Lomba</label>
+                              <textarea class="form-control @error('tempat_kegiatan') is-invalid @enderror" rows="3" name="tempat_kegiatan" placeholder="Alamat Lomba Dilaksanakan"></textarea>
+                              @error('tempat_kegiatan')
+                              <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                          </div>
+                      </div>
                   </div>
-                </div>
-                <!-- /.modal-content -->
-              </div>
-              <!-- /.modal-dialog -->
-            </div>
+                  <div class="modal-footer justify-content-between">
+                      <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fas fa-times"></i> Tutup</button>
+                      <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+      <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!-- /.modal -->
+
             {{-- Akhir Popup untuk tombol tambah --}}   
             @include('sweetalert::alert')       
 @endsection
 @section('javascript')
 <script>
-  $(function() {
+  $(function() 
     var Toast = Swal.mixin({
       toast: true,
       position: 'top-end',
@@ -328,13 +364,14 @@
     });
 </script>
 <script>
-document.getElementById('foto_kegiatan').addEventListener('change', function() {
+{ document.getElementById('foto_kegiatan').addEventListener('change', function() {
   const fileInput = this;
   const errorMessage = document.getElementById('error-message');
   
   if (fileInput.files.length === 0) {
     errorMessage.textContent = '';
     return;
+  }
   }
 
   const file = fileInput.files[0];

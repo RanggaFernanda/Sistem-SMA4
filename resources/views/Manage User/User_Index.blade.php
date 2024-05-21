@@ -34,11 +34,12 @@
                     <td>
                       <a href="/manageuser/edit/{{ $user->id }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
                       <a href="/manageuser/delete/{{ $user->id}}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Hapus</a>
+                      
                     </td>
                 </tr>
             </div>
           @endforeach
-        </tbody>
+        {{-- </tbody>
         <tfoot>
         <tr>
             <th>No</th>
@@ -48,7 +49,7 @@
             <th>Action</th>
         </tr>
         </tfoot>
-      </table>
+      </table> --}}
     </div>
     <!-- /.card-body -->
   </div>

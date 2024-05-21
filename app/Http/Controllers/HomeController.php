@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\DataPembina;
+use App\Models\Dataekskul;
+use App\Models\Dataevent;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -26,14 +30,38 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        $dataEkskul   = DB::table('dataekskuls')->count();
-        $dataPrestasi   = DB::table('dataevents')->count();
-        $dataEvent      = DB::table('dataevents')->count();
-        $dataPembina    = DB::table('users')->count();
-        return view('home', compact('dataEkskul', 'dataPrestasi', 'dataEvent', 'dataPembina'));
-    }
+    // public function index()
+    // {
+    //     $dataEkskul   = DB::table('dataekskuls')->count();
+    //     $dataPrestasi   = DB::table('dataevents')->count();
+    //     $dataEvent      = DB::table('dataevents')->count();
+    //     $dataPembina    = DB::table('users')->count();
+    //     return view('home', compact('dataEkskul', 'dataPrestasi', 'dataEvent', 'dataPembina'));
+    // }
+    
+    
+        public function index()
+        {
+            // Fetch the data for the info boxes
+            $dataPembina = Datapembina::count();
+            $dataEvent = DataEvent::count();
+            $dataPrestasi = DataEvent::count();
+            $dataEkskul = Dataekskul::count();
+    
+            // Calculate total data count
+            $totalData = $dataPembina + $dataEvent + $dataPrestasi + $dataEkskul;
+    
+            // Example data for the chart
+            // You can replace this with actual logic to fetch relevant data
+            $chartData = [
+                'labels' => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], // Example labels
+                'data' => [12, 19, 3, 5, 2, 3] // Example data
+            ];
+    
+            // Pass the data to the view
+            return view('Home', compact('dataPembina', 'dataEvent', 'dataPrestasi', 'dataEkskul', 'chartData', 'totalData'));
+        }
+    
 
     public function userProfile() {
         $user = User::findOrFail(Auth::user()->id);
@@ -44,6 +72,7 @@ class HomeController extends Controller
         $user = User::findOrFail($id);
         return view("Data Profil.Profil_Edit", compact("user"));
     }
+
 
     public function updateUserProfile(Request $request, $id) {
         $this->validate($request, [

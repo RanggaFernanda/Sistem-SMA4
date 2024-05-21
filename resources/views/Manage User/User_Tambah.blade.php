@@ -17,7 +17,7 @@
               <form action="/manageuser/store" method="POST">
                 @csrf
               <div class="form-group">
-                <label for="name">Nama Pembina</label>
+                <label for="name">Nama Pengguna</label>
                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Nama Lengkap" autofocus>
                 @error('name')
                   <div class="alert alert-danger">{{ $message }}</div>
@@ -31,7 +31,7 @@
                 @enderror
               </div>
               <div class="form-group">
-                <label for="email">Ekskul</label>
+                <label for="name">Ekskul</label>
                 <select name="nama_ekskul" id="" class="form-control">
                   <option value="">-- Pilih Ekskul -- </option>
                   @foreach ($dataekskul as $item)
