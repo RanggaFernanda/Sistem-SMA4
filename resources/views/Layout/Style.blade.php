@@ -24,6 +24,8 @@
 <link rel="stylesheet" href="{{ asset('AdminLTE')}}/plugins/dropzone/min/dropzone.min.css">
 <!-- summernote -->
 <link rel="stylesheet" href="{{ asset('AdminLTE')}}/plugins/summernote/summernote-bs4.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="{{ asset('AdminLTE')}}/plugins/fontawesome-free/css/all.min.css">
@@ -43,5 +45,4 @@
   <link rel="stylesheet" href="{{ asset('AdminLTE')}}/plugins/toastr/toastr.min.css">
   <!-- Select2 -->
   <link rel="stylesheet" href="{{ asset('AdminLTE')}}/plugins/select2/css/select2.min.css">
- 
-  
+

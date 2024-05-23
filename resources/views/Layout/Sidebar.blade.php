@@ -1,7 +1,7 @@
 {{-- <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="/home" class="brand-link">
-    <img src="{{ asset('adminLTE') }}/dist/img/logsmapa.png" alt="AdminLTE Logo" class="brand-image 
+    <img src="{{ asset('adminLTE') }}/dist/img/logsmapa.png" alt="AdminLTE Logo" class="brand-image
          style="opacity: .8">
     <span class="brand-text font-weight-light"> <strong>EKSTRASMAPA</strong> </span>
   </a>
@@ -33,10 +33,10 @@
               {{-- Dashboard --}}
             {{-- </p>
           </a>
-          
-        </li> --}} 
-        {{-- <li class="nav-item has-treeview"> 
-          @if (Auth()->user()->role == 'Administrator')       
+
+        </li> --}}
+        {{-- <li class="nav-item has-treeview">
+          @if (Auth()->user()->role == 'Administrator')
           <a href="#" class="nav-link {{ (request()->is('dataekskul*', 'datapembina*')) ? 'active' : '' }}">
             <i class="fas fa-server"></i>
             <p>
@@ -46,14 +46,14 @@
           </a>
         @endif
           <ul class="nav nav-treeview">
-            
+
             <li class="nav-item">
               <a href="{{ route('dataekskul.index')}}" class="nav-link {{ (request()->is('dataekskul*')) ? 'active' : '' }}">
                 <i class="fas fa-angle-right"></i>
                 <p>Data Ekskul</p>
               </a>
             </li>
-          
+
             <li class="nav-item">
               <a href="{{ route('datapembina.index')}}" class="nav-link {{ (request()->is('datapembina*')) ? 'active' : '' }}">
                 <i class="fas fa-angle-right"></i>
@@ -79,7 +79,7 @@
           </a>
 
         </li>
-        
+
         <li class="nav-item">
           <a href="{{ route('datapembina.index') }}" class="nav-link {{ (request()->is('datapembina*')) ? 'active' : '' }}">
             <i class="fas fa-user"></i>
@@ -93,7 +93,7 @@
             <p>Data Siswa</p>
           </a>
         </li>
-  @endif      
+  @endif
         {{-- <li class="nav-item">
           <a href="{{ route('laporan.index') }}" class="nav-link {{ (request()->is('laporan*')) ? 'active' : '' }}">
             <i class="fas fa-trophy"></i>
@@ -110,7 +110,7 @@
 
 
 {{-- Role Siswa --}}
-{{-- 
+{{--
         @if (Auth()->user()->role == 'Siswa')
         <li class="nav-item">
           <a href="{{ route('daftarekskul.index') }}" class="nav-link {{ (request()->is('daftarekskul*')) ? 'active' : '' }}">
@@ -119,7 +119,7 @@
           </a>
         </li>
 @endif --}}
-{{--         
+{{--
 @if (Auth()->user()->role == 'Siswa')
         <li class="nav-item">
           <a href="{{ route('myekskul.index') }}" class="nav-link {{ (request()->is('myekskul*')) ? 'active' : '' }}">
@@ -154,8 +154,8 @@
       {{-- <br>
       <br>
       <br>  --}}
-        
-{{--   
+
+{{--
       <li class="nav-item">
           <form id="logout-form" action="{{ route('logout') }}" method="POST" onclick="event.preventDefault();
           document.getElementById('logout-form').submit();" class="nav-link">
@@ -310,7 +310,7 @@
                      style="opacity: .8">
                 <span class="brand-text font-weight-light"><strong>EKSTRASMAPA</strong></span>
               </a>
-            
+
               <!-- Sidebar -->
               <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
@@ -327,7 +327,7 @@
                     </a>
                   </div>
                 </div> --}}
-            
+
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                   <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -349,7 +349,7 @@
                     </li>
                     @endif
                     <!-- Ekstrakulikuler -->
-                    @if (Auth::user()->role == 'Administrator' || Auth::user()->role == 'Pembina') 
+                    @if (Auth::user()->role == 'Administrator' || Auth::user()->role == 'Pembina')
                     <li class="nav-item">
                       <a href="{{ route('dataekskul.index') }}" class="nav-link {{ (request()->is('dataekskul*')) ? 'active' : '' }}">
                         <i class="fas fa-baseball-ball"></i>
@@ -366,9 +366,9 @@
                       </a>
                     </li>
                     @endif
-                    
+
                     <!-- Data Siswa -->
-                    @if (Auth::user()->role == 'Administrator' || Auth::user()->role == 'Pembina') 
+                    @if (Auth::user()->role == 'Administrator' || Auth::user()->role == 'Pembina')
                     <li class="nav-item">
                       <a href="{{ route('datasiswa.index') }}" class="nav-link {{ (request()->is('datasiswa*')) ? 'active' : '' }}">
                         <i class="fas fa-user"></i>
@@ -376,7 +376,7 @@
                       </a>
                     </li>
                     @endif
-                    @if (Auth::user()->role == 'Pembina') 
+                    @if (Auth::user()->role == 'Pembina')
                     <li class="nav-item">
                       <a href="{{ route('absensi') }}" class="nav-link {{ (request()->is('absensi*')) ? 'active' : '' }}">
                         <i class="fas fa-user"></i>
@@ -392,7 +392,7 @@
                         <p>Event Prestasi</p>
                       </a>
                     </li>
-            
+
                     <!-- Ekstrakulikuler for Siswa -->
                     @if (Auth::user()->role == 'Siswa')
                     <li class="nav-item">
@@ -408,7 +408,7 @@
                       </a>
                     </li>
                     @endif
-            
+
                     <!-- Manage User for Administrator -->
                     @if (Auth()->user()->role == 'Administrator')
                     <li class="nav-item">
@@ -425,7 +425,7 @@
                       </a>
                     </li> --}}
                     @endif
-            
+
                     <!-- Logout -->
                     <li class="nav-item">
                       <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -437,11 +437,10 @@
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                       @csrf
                   </form>
-                  
+
                   </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
               </div>
               <!-- /.sidebar -->
             </aside>
-            

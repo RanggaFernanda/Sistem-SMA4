@@ -11,14 +11,14 @@ class CreateAbsensiTable extends Migration
         Schema::create('absensi', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('nama_siswa');
-            $table->unsignedBigInteger('ekskul');
+            $table->unsignedBigInteger('id_siswa');
+            $table->unsignedBigInteger('id_ekskul');
             $table->date('tanggal');
-            $table->boolean('kehadiran'); // true untuk hadir, false untuk tidak hadir
+            $table->enum('kehadiran', ['hadir', 'absen', 'izin', 'sakit'])->default('absen');
+            $table->integer('pertemuan')->nullable();
             $table->timestamps();
-
-            $table->foreign('nama_siswa')->references('id')->on('datasiswas');
-            $table->foreign('ekskul')->references('id')->on('dataekskuls');
+            $table->foreign('id_siswa')->references('id')->on('datasiswas');
+            $table->foreign('id_ekskul')->references('id')->on('dataekskuls');
         });
     }
 

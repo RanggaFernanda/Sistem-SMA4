@@ -11,11 +11,11 @@ class Daftarekskul extends Model
     protected $table = "datasiswas";
     protected $primaryKey = "id";
     protected $fillable = [
-        'nama_siswa', 'nisn_siswa','user_id', 'kelas_siswa', 'email_siswa', 'jeniskelamin_siswa','ekstrakulikuler_siswa', 
+        'nama_siswa', 'nisn_siswa','user_id', 'kelas_siswa', 'email_siswa', 'jeniskelamin_siswa','id_ekskul',
     ];
         public function author()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
-    
+
 }

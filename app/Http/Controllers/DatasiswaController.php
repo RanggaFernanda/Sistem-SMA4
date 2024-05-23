@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataSiswa;
+use App\Models\Dataekskul;
 // use DataSiswa;
 use Illuminate\Http\Request;
-use illuminate\support\Facades\Auth;
+use Illuminate\support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DatasiswaController extends Controller
 {
@@ -16,8 +18,11 @@ class DatasiswaController extends Controller
      */
     public function index()
     {
-        $dtsiswa = DataSiswa::all();
-        return view('Data Siswa.Data_Siswa', compact('dtsiswa'));
+        $dtsiswa = DB::table('dataekskuls')
+        ->join('datasiswas', 'datasiswas.id_ekskul', '=', 'dataekskuls.id')
+        ->get();;
+        $dtekskull = Dataekskul::all();
+        return view('Data Siswa.Data_Siswa', compact('dtsiswa','dtekskull'));
     }
 
     /**
@@ -28,7 +33,7 @@ class DatasiswaController extends Controller
     public function create()
     {
         return view('Data Siswa.Data_Siswa.Tambah_Siswa');
-        
+
     }
 
     /**
@@ -41,7 +46,7 @@ class DatasiswaController extends Controller
     {
         // $request->validate([
         //     'nama_pembina'=>'required',
-        //     'email_pembina'=>'required',          
+        //     'email_pembina'=>'required',
         // ]);
         // $dtpembina = New DataPembina();
         // $dtpembina->nama_pembina=$request->get('nama_pembina');
@@ -58,7 +63,7 @@ class DatasiswaController extends Controller
         // $dtpembina->foto_kegiatan = $filename;
 
         DataSiswa::create($request->all());
-    
+
     // $dtpembina->save();
 
     return redirect()->route('datasiswa.index')->with('success', 'Berhasil Dibuat');
@@ -87,7 +92,7 @@ class DatasiswaController extends Controller
         $dtsiswa = DataSiswa::findOrFail($id);
         return view('Data Siswa.Data_Siswa', compact('dtsiswa'));
     }
-    
+
 
     /**
      * Update the specified resource in storage.
@@ -100,22 +105,22 @@ class DatasiswaController extends Controller
 {
     $request->validate([
         // Validasi sesuai dengan kolom yang ada
-        'nama_siswa' => 'required',
-        'nisn_siswa' => 'required',
-        'kelas_siswa' => 'required',
-        'email_siswa' => 'required|email',
-        'jeniskelamin_siswa' => 'required',
-        'ekstrakulikuler_siswa' => 'required',
+        // 'nama_siswa' => 'required',
+        // 'nisn_siswa' => 'required',
+        // 'kelas_siswa' => 'required',
+        // 'email_siswa' => 'required|email',
+        // 'jeniskelamin_siswa' => 'required',
+        // 'ekstrakulikuler_siswa' => 'required',
         'nilai_siswa' => 'required',
     ]);
 
     $datasiswa = DataSiswa::find($id);
-    $datasiswa->nama_siswa = $request->nama_siswa;
-    $datasiswa->nisn_siswa = $request->nisn_siswa;
-    $datasiswa->kelas_siswa = $request->kelas_siswa;
-    $datasiswa->email_siswa = $request->email_siswa;
-    $datasiswa->jeniskelamin_siswa = $request->jeniskelamin_siswa;
-    $datasiswa->ekstrakulikuler_siswa = $request->ekstrakulikuler_siswa;
+    // $datasiswa->nama_siswa = $request->nama_siswa;
+    // $datasiswa->nisn_siswa = $request->nisn_siswa;
+    // $datasiswa->kelas_siswa = $request->kelas_siswa;
+    // $datasiswa->email_siswa = $request->email_siswa;
+    // $datasiswa->jeniskelamin_siswa = $request->jeniskelamin_siswa;
+    // $datasiswa->ekstrakulikuler_siswa = $request->ekstrakulikuler_siswa;
     $datasiswa->nilai_siswa = $request->nilai_siswa;
     $datasiswa->save();
 
@@ -134,5 +139,5 @@ class DatasiswaController extends Controller
         $dtsiswa->delete();
         return redirect()->back()->with('success', 'Berhasil Dihapus');
     }
-    
+
 }

@@ -11,10 +11,12 @@ class Absensi extends Model
     protected $table = 'absensi';
 
     protected $fillable = [
-        'nama_siswa',
-        'ekskul',
+        'id_siswa',
+        // 'nama_siswa',
+        'id_ekskul',
         'tanggal',
         'kehadiran',
+        'pertemuan'
     ];
 
     public function siswa()

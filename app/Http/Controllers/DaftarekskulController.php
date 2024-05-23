@@ -21,7 +21,7 @@ class DaftarekskulController extends Controller
 {
     // echo Auth::id();
     $dtekskul = Dataekskul::all();
-    
+
     if (Auth::user()->role == 'Siswa') {
         $dtdaftarekskul = Daftarekskul::where('user_id', Auth::id())->get();
     } else {
@@ -31,16 +31,16 @@ class DaftarekskulController extends Controller
     return view('Data Daftar Ekskul.Data_DaftarEkskul', compact('dtdaftarekskul', 'dtekskul'));
 }
 
-  
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('Data Daftar Ekskul.Data_DaftarEkskul.Tambah_ekskul');
-        
+    {$dtekskul = Dataekskul::all();
+        return view('Data Daftar Ekskul.Data_DaftarEkskul.Tambah_ekskul', compact('dtekskul'));
+
     }
 
     /**
@@ -53,7 +53,7 @@ class DaftarekskulController extends Controller
     {
         // $request->validate([
         //     'nama_pembina'=>'required',
-        //     'email_pembina'=>'required',          
+        //     'email_pembina'=>'required',
         // ]);
         // $dtpembina = New DataPembina();
         // $dtpembina->nama_pembina=$request->get('nama_pembina');
@@ -70,7 +70,7 @@ class DaftarekskulController extends Controller
         // $dtpembina->foto_kegiatan = $filename;
 
         Daftarekskul::create($request->all());
-    
+
     // $dtpembina->save();
 
     return redirect()->route('daftarekskul.index')->with('success', 'Berhasil Dibuat');
@@ -99,7 +99,7 @@ class DaftarekskulController extends Controller
         $dtsiswa = Daftarekskul::findOrFail($id);
         return view('Data Daftar Ekskul.Data_daftarEkskul', compact('dtdaftarekskul'));
     }
-    
+
 
     /**
      * Update the specified resource in storage.
@@ -118,7 +118,7 @@ class DaftarekskulController extends Controller
         'email_siswa' => 'required|email',
         'jeniskelamin_siswa' => 'required',
         'ekstrakulikuler_siswa' => 'required',
-        
+
     ]);
 
     $datasiswa = Daftarekskul::find($id);
@@ -128,7 +128,7 @@ class DaftarekskulController extends Controller
     $datasiswa->email_siswa = $request->email_siswa;
     $datasiswa->jeniskelamin_siswa = $request->jeniskelamin_siswa;
     $datasiswa->ekstrakulikuler_siswa = $request->ekstrakulikuler_siswa;
- 
+
     $datasiswa->save();
 
     return redirect()->route('daftarekskul.index')->with('success', 'Data ekstra berhasil diupdate');
@@ -146,5 +146,5 @@ class DaftarekskulController extends Controller
         $dtsiswa->delete();
         return redirect()->back()->with('success', 'Berhasil Dihapus');
     }
-    
+
 }

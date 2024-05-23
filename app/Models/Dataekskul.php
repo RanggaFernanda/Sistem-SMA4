@@ -11,7 +11,7 @@ class Dataekskul extends Model
     protected $table = "dataekskuls";
     protected $primaryKey = "id";
     protected $fillable = [
-        'id', 'nama_ekskul', 'kategori_ekskul', 'pelatih_ekskul',
+        'id', 'nama_ekskul','user_id', 'kategori_ekskul', 'pelatih_ekskul',
     ];
     public function author()
     {

@@ -33,7 +33,7 @@
                                 <th>Jenis Kelamin</th>
                                 <th>Ekstrakulikuler</th>
                                 <th>Nilai</th>
-                                
+
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -46,7 +46,7 @@
                                     <td>{{ $dt_siswa->kelas_siswa }}</td>
                                     <td>{{ $dt_siswa->email_siswa }}</td>
                                     <td>{{ $dt_siswa->jeniskelamin_siswa }}</td>
-                                    <td>{{ $dt_siswa->ekstrakulikuler_siswa }}</td>
+                                    <td>{{ $dt_siswa->nama_ekskul }}</td>
                                     <td>{{ $dt_siswa->nilai_siswa }}</td>
                                     <td>
                                         {{-- Pembina --}}
@@ -55,7 +55,7 @@
                                         <a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#_edit-{{ $dt_siswa->id }}"><i class="fas fa-edit" title="Edit"></i>Beri Nilai</a>
                                         <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#_hapus-{{ $dt_siswa->id }}"><i class="fas fa-trash" title="Delete"></i></a>
                                     </td>
-                                    
+
 
                                     <td>
                                         {{-- Admin --}}
@@ -93,7 +93,7 @@
                                                         <dt class="col-sm-4">Jenis Kelamin</dt>
                                                         <dd class="col-sm-8">{{ $dt_siswa->jeniskelamin_siswa}}</dd>
                                                         <dt class="col-sm-4">Ekstrakulikuler</dt>
-                                                        <dd class="col-sm-8">{{ $dt_siswa->ekstrakulikuler_siswa}}</dd>
+                                                        <dd class="col-sm-8">{{ $dt_siswa->nama_ekskul}}</dd>
                                                         <dt class="col-sm-4">Nilai</dt>
                                                         <dd class="col-sm-8">{{ $dt_siswa->nilai_siswa }}</dd>
                                                     </dl>
@@ -121,7 +121,7 @@
                     @csrf
                     @method('PUT')
                     <div class="card-body">
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="namasiswa">Nama Siswa</label>
                             <input type="text" class="form-control" name="nama_siswa" value="{{ $dt_siswa->nama_siswa }}" required>
                         </div>
@@ -143,8 +143,8 @@
                         </div>
                         <div class="form-group">
                             <label for="ekstrakulikulersiswa">Ekstrakulikuler</label>
-                            <input type="text" class="form-control" name="ekstrakulikuler_siswa" value="{{ $dt_siswa->ekstrakulikuler_siswa }}" required>
-                        </div>
+                            <input type="text" class="form-control" name="ekstrakulikuler_siswa" value="{{ $dt_siswa->nama_ekskul }}" required>
+                        </div> -->
                         <div class="form-group">
                             <label for="nilaisiswa">Nilai</label>
                             <input type="text" class="form-control" name="nilai_siswa" value="{{ $dt_siswa->nilai_siswa }}" required>
@@ -232,9 +232,13 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="ekstrakulikulersiswa">Ekstrakulikuler</label>
-                            <input type="text" class="form-control" name="ekstrakulikuler_siswa" placeholder="Masukan Ekstrakulikuler" required>
-                        </div>
+    <label for="ekstrakulikulersiswa">Ekstrakulikuler</label>
+    <select class="form-control" name="id_ekskul" required>
+        @foreach($dtekskull as $ekskul)
+            <option value="{{ $ekskul->id }}">{{ $ekskul->nama_ekskul }}</option>
+        @endforeach
+    </select>
+</div>
                         <div class="form-group">
                             <label for="nilaisiswa">Nilai</label>
                             <input type="text" class="form-control" name="nilai_siswa" placeholder="Masukan Nilai" required>

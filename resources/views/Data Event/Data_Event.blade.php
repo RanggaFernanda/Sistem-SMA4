@@ -9,7 +9,7 @@
                   @error('status_kegiatan')
                   <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
-                
+
                   @error('nama_kegiatan')
                   <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
@@ -19,7 +19,7 @@
                     <div class="card-tools">
                       <div class="input-group input-group-sm" style="width: 250px;">
                         <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-    
+
                         <div class="input-group-append">
                           <button type="submit" class="btn btn-default">
                             <i class="fas fa-search"></i>
@@ -215,7 +215,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                   <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
-                  <a href="#" class="btn btn-secondary btn-sm"><i class="fas fa-print"></i> Print</a>
+                  <a href="{{route('dataevent.print',$event->id)}}" class="btn btn-secondary btn-sm"><i class="fas fa-print"></i> Print</a>
                   </form>
                 </div>
               </div>
@@ -234,7 +234,7 @@
   </div>
  </div>
     <!-- /.row -->
-                        
+
             {{-- Awal Popup untuk tombol tambah --}}
          <!-- Modal Tambah Data Event -->
 <div class="modal fade" id="modal_tambah">
@@ -350,39 +350,79 @@
 
 <!-- /.modal -->
 
-            {{-- Akhir Popup untuk tombol tambah --}}   
-            @include('sweetalert::alert')       
+            {{-- Akhir Popup untuk tombol tambah --}}
+            @include('sweetalert::alert')
 @endsection
 @section('javascript')
+<!-- <script>
+  $(function(){
+    var Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+        })};
+</script> -->
 <script>
-  $(function() 
+  $(function(){
     var Toast = Swal.mixin({
       toast: true,
       position: 'top-end',
       showConfirmButton: false,
       timer: 3000
     });
+
+    // Contoh cara memanggil toast
+    Toast.fire({
+      icon: 'success',
+      title: 'Absensi berhasil disimpan'
+    });
+  });
 </script>
+
+<!--<script>
+// { document.getElementById('foto_kegiatan').addEventListener('change', function() {
+//   const fileInput = this;
+//   const errorMessage = document.getElementById('error-message');
+
+//   if (fileInput.files.length === 0) {
+//     errorMessage.textContent = '';
+//     return;
+//   }
+// }
+
+//   const file = fileInput.files[0];
+//   const fileSize = file.size / 1024; // Convert to KB
+
+//   if (!file.type.startsWith('image/') || fileSize > 1024) {
+//     fileInput.value = ''; // Clear the file input
+//     errorMessage.textContent = 'Hanya gambar dengan ukuran maksimal 1 MB yang diizinkan.';
+//   } else {
+//     errorMessage.textContent = '';
+//   }
+// });
+// </script>
 <script>
-{ document.getElementById('foto_kegiatan').addEventListener('change', function() {
-  const fileInput = this;
-  const errorMessage = document.getElementById('error-message');
-  
-  if (fileInput.files.length === 0) {
-    errorMessage.textContent = '';
-    return;
-  }
-  }
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('foto_kegiatan').addEventListener('change', function() {
+        const fileInput = this;
+        const errorMessage = document.getElementById('error-message');
 
-  const file = fileInput.files[0];
-  const fileSize = file.size / 1024; // Convert to KB
+        if (fileInput.files.length === 0) {
+            errorMessage.textContent = '';
+            return;
+        }
 
-  if (!file.type.startsWith('image/') || fileSize > 1024) {
-    fileInput.value = ''; // Clear the file input
-    errorMessage.textContent = 'Hanya gambar dengan ukuran maksimal 1 MB yang diizinkan.';
-  } else {
-    errorMessage.textContent = '';
-  }
+        const file = fileInput.files[0];
+        const fileSize = file.size / 1024; // Convert to KB
+
+        if (!file.type.startsWith('image/') || fileSize > 1024) {
+            fileInput.value = ''; // Clear the file input
+            errorMessage.textContent = 'Hanya gambar dengan ukuran maksimal 1 MB yang diizinkan.';
+        } else {
+            errorMessage.textContent = '';
+        }
+    });
 });
 </script>
 @endsection

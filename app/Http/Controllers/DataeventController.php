@@ -31,7 +31,10 @@ class DataeventController extends Controller
         }
 
     }
-
+    public function print($id){
+        $event = Dataevent::find($id);
+        return view('Data Event.print', compact('event'));
+    }
     public function EventExport(){
         return Excel::Download(New EventExport, 'dataevent.xlsx');
     }
@@ -57,7 +60,7 @@ class DataeventController extends Controller
             'status_kegiatan'=>'required',
             'nama_kegiatan'=>'required',
         ]);
-        
+
         $dataevent= New Dataevent();
         $dataevent->user_id=Auth::user()->id;
         $dataevent->status_kegiatan=$request->input('status_kegiatan');

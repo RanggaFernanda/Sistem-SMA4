@@ -52,12 +52,12 @@ class DataekskulController extends Controller
 
         // $dataekskul= New Dataekskul;
         // $dataekskul->user_id=Auth::user()->id;
-        
+
         // $dataekskul->nama_ekskul=$request->get('nama_ekskul');
         // $dataekskul->kategori_ekskul=$request->get('ketegori_ekskul');
         // $dataekskul->jadwal_ekskul=$request->get('jadwal_ekskul');
         // $dataekskul->save();
-        
+
         return redirect()->route('dataekskul.index')->with('success', 'Alhamdulillah Berhasil Dibuat');
     }
 
@@ -102,7 +102,7 @@ class DataekskulController extends Controller
         ]);
         Dataekskul::find($id)
             ->update($request->all());
-        
+
         return redirect()->back()->with('success', 'Berhasil Diupdate');
     }
 

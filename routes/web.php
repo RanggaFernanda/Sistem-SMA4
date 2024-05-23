@@ -57,12 +57,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware(['auth', 'ceklevel:Administrator,Siswa,Pembina'])->group(function () {
     Route::resource('/dataevent', DataeventController::class);
+    // Route::get('/print/{id}',[DataeventController::class],'print')->name('print');
+    Route::get('/print/{id}', [DataeventController::class, 'print'])->name('dataevent.print');
+
     Route::resource('/dataprestasi', DataprestasiController::class);
     Route::resource('/datalatihan', DatalatihanController::class);
 
     // ---------------Route Export Import Excel Data Event-------------------//
     Route::get('/exportevent', [DataeventController::class, 'EventExport'])->name('exportevent');
-    
+
     // ---------------Manage Profil-------------------//
     Route::get('/user/profile/{id}', [HomeController::class, 'userProfile'])->name('user.profile');
     Route::get('/user/profile/edit/{id}',[HomeController::class, 'editUserProfile'])->name('user.profile.edit');
@@ -81,11 +84,14 @@ Route::middleware(['auth', 'ceklevel:Administrator,Pembina'])->group(function ()
     Route::get('/absensi', [AbsensiController::class, 'showAbsensi']);
     Route::resource('absensi', AbsensiController::class);
     Route::get('/absensi', [AbsensiController::class, 'index'])->name('absensi');
-    Route::get('/absensi/create', [AbsensiController::class, 'create'])->name('absensi.create');
-    Route::post('/absensi/store', [AbsensiController::class, 'store'])->name('absensi.store');
-    Route::get('/absensi/{id}/edit', [AbsensiController::class, 'edit'])->name('absensi.edit');
-    Route::put('/absensi/{id}/update', [AbsensiController::class, 'update'])->name('absensi.update');
-    Route::delete('/absensi/{id}/destroy', [AbsensiController::class, 'destroy'])->name('absensi.destroy');
+    // Route::get('/absensi/create', [AbsensiController::class, 'create'])->name('absensi.create');
+    // Route::post('/absensi/store', [AbsensiController::class, 'store'])->name('absensi.store');
+    // Route::get('/absensi/{id}/edit', [AbsensiController::class, 'edit'])->name('absensi.edit');
+    // Route::put('/absensi/{id}/update', [AbsensiController::class, 'update'])->name('absensi.update');
+    // Route::delete('/absensi/{id}/destroy', [AbsensiController::class, 'destroy'])->name('absensi.destroy');
+    Route::get('absensi/{id}', [AbsensiController::class, 'show'])->name('absensi.show');
+    Route::get('absensi/create/{id}', [AbsensiController::class, 'create'])->name('absensi.create');
+    Route::post('/submit-absensi', [AbsensiController::class, 'store'])->name('submit-absensi');
     Route::resource('/datasiswa', DatasiswaController::class);
     Route::post('/datasiswa/store', [DatasiswaController::class, 'store'])->name('datasiswa-simpan');
 

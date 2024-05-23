@@ -189,6 +189,7 @@
                             <option value="non-akademik">Non-Akademik</option>
                         </select>
                         <br>
+                        <input type="hidden" name="user_id" value="{{Auth::id()}}">
                         <label for="pelatihEkskul">Nama Pelatih</label>
                         <input class="form-control" type="text" id="id" name="pelatih_ekskul" class="@error('nama_ekskul') is-invalid @enderror" placeholder="Masukan Nama Pelatih">
                     </div>

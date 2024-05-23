@@ -33,7 +33,7 @@
                                 <th>Jenis Kelamin</th>
                                 <th>Ekstrakulikuler</th>
                                 <th>status</th>
-            
+
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -80,7 +80,7 @@
                                                         <dd class="col-sm-8">{{ $dt_daftarekskul->jeniskelamin_siswa}}</dd>
                                                         <dt class="col-sm-4">Ekstrakulikuler</dt>
                                                         <dd class="col-sm-8">{{ $dt_daftarekskul->ekstrakulikuler_siswa}}</dd>
-                                                        
+
                                                     </dl>
                                                 </div>
                                             </div>
@@ -224,7 +224,7 @@
                             <select name="ekstrakulikuler_siswa"  class="form-control @error('ekstrakulikuler_siswa') is-invalid @enderror">
                                 <option value="">-- Pilih Ekstrakulikuler --</option>
                                 @foreach ($dtekskul as $item)
-                                <option value="{{ $item->nama_ekskul }}">{{ $item->nama_ekskul }}</option>
+                                <option value="{{ $item->id_ekskul }}">{{ $item->nama_ekskul }}</option>
                                 @endforeach
                             </select>
                             @error('Ekstrakulikuler_siswa')
@@ -236,7 +236,7 @@
                             <input type="text" class="form-control" name="nilai_siswa" placeholder="Masukan Nilai" required>
                         </div> --}}
                     </div>
-                    
+
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
                         <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</button>

@@ -22,12 +22,13 @@ class DataSiswa extends Migration
             $table->string('kelas_siswa')->nullable();
             $table->string('email_siswa')->nullable();
             $table->string('jeniskelamin_siswa')->nullable();
-            $table->string('ekstrakulikuler_siswa')->nullable();
+            $table->string('id_ekskul')->nullable();
             $table->string('nilai_siswa')->nullable();
-            
+
             $table->timestamps();
         });
     }
+    
 
     /**
      * Reverse the migrations.
