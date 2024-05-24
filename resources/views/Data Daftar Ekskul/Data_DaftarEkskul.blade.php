@@ -46,7 +46,7 @@
                                     <td>{{ $dt_daftarekskul->kelas_siswa }}</td>
                                     <td>{{ $dt_daftarekskul->email_siswa }}</td>
                                     <td>{{ $dt_daftarekskul->jeniskelamin_siswa }}</td>
-                                    <td>{{ $dt_daftarekskul->ekstrakulikuler_siswa }}</td>
+                                    <td>{{ $dt_daftarekskul->id_ekskul }}</td>
                                    <td>{{ $dt_daftarekskul->validasi }}</td>
                                     <td>
                                         <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#_detail-{{ $dt_daftarekskul->id }}"><i class="fas fa-eye" title="Detail"></i></a>
@@ -221,13 +221,13 @@
                         <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                         <div class="form-group">
                             <label for="Ekstrakulikulersiswa">Ekstrakulikuler</label>
-                            <select name="ekstrakulikuler_siswa"  class="form-control @error('ekstrakulikuler_siswa') is-invalid @enderror">
+                            <select name="id_ekskul"  class="form-control @error('id_ekskul') is-invalid @enderror">
                                 <option value="">-- Pilih Ekstrakulikuler --</option>
                                 @foreach ($dtekskul as $item)
-                                <option value="{{ $item->id_ekskul }}">{{ $item->nama_ekskul }}</option>
+                                <option value="{{ $item->id }}">{{ $item->nama_ekskul }}</option>
                                 @endforeach
                             </select>
-                            @error('Ekstrakulikuler_siswa')
+                            @error('id_ekskul')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
