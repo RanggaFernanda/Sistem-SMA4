@@ -215,7 +215,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                   <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
-                  <a href="{{route('dataevent.print',$event->id)}}" class="btn btn-secondary btn-sm"><i class="fas fa-print"></i> Print</a>
+                  <a href="{{route('print',$event->id)}}" class="btn btn-secondary btn-sm"><i class="fas fa-print"></i> Print</a>
                   </form>
                 </div>
               </div>

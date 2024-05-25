@@ -27,7 +27,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Siswa</th>
-                                <th>NISN</th>
+                                <!-- <th>NISN</th> -->
                                 <th>Kelas</th>
                                 <th>Email</th>
                                 <th>Jenis Kelamin</th>
@@ -38,28 +38,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach ($dtsiswa as $dt_siswa)
-    <tr>
-        <td>{{ $loop->iteration }}</td>
-        <td>{{ $dt_siswa->author ? $dt_siswa->author->name : 'No Author' }}</td>
-        <td>{{ $dt_siswa->nisn_siswa }}</td>
-        <td>{{ $dt_siswa->kelas_siswa }}</td>
-        <td>{{ $dt_siswa->email_siswa }}</td>
-        <td>{{ $dt_siswa->jeniskelamin_siswa }}</td>
-        <td>{{ $dt_siswa->nama_ekskul }}</td>
-        <td>{{ $dt_siswa->nilai_siswa }}</td>
-        <td style="display: flex;flex-direction:row;">
-            @if (Auth::user()->role == 'Pembina')
-                <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#_detail-{{ $dt_siswa->id }}">
-                    <i class="fas fa-eye" title="Detail"></i>
-                </a>
-                <a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#_edit-{{ $dt_siswa->id }}">
-                    <i class="fas fa-edit" title="Edit"></i>Beri Nilai
-                </a>
-                <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#_hapus-{{ $dt_siswa->id }}">
-                    <i class="fas fa-trash" title="Delete"></i>
-                </a>
-            @endif
+                            @foreach ($dtsiswa as $dt_siswa)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $dt_siswa->author ? $dt_siswa->author->name : 'No Author' }}</td>
+                                <!-- <td>{{ $dt_siswa->nisn_siswa }}</td> -->
+                                <td>{{ $dt_siswa->kelas_siswa }}</td>
+                                <td>{{ $dt_siswa->email_siswa }}</td>
+                                <td>{{ $dt_siswa->jeniskelamin_siswa }}</td>
+                                <td>{{ $dt_siswa->nama_ekskul }}</td>
+                                <td>{{ $dt_siswa->nilai_siswa }}</td>
+                                <td style="display: flex;justify-content: space-between">
+                                    @if (Auth::user()->role == 'Pembina' || Auth::user()->role == "Administrator")
+                                    <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#_detail-{{ $dt_siswa->id }}">
+                                        <i class="fas fa-eye" title="Detail"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#_edit-{{ $dt_siswa->id }}">
+                                        <i class="fas fa-edit" title="Edit"></i>Beri Nilai
+                                    </a>
+                                    <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#_hapus-{{ $dt_siswa->id }}">
+                                        <i class="fas fa-trash" title="Delete"></i>
+                                    </a>
+                                    @endif
 
 
                             </tr>
@@ -207,65 +207,65 @@
                             <label for="namasiswa">Nama Siswa</label>
                             <input type="text" class="form-control" name="nama_siswa" placeholder="Masukan Nama Siswa" required>
                         </div> -->
-                        <div class="form-group">
-                            <label for="nisnsiswa">NISN</label>
-                            <input type="text" class="form-control" name="nisn_siswa" placeholder="Masukan NISN" required>
-                        </div>
-                        @if (Auth::user()->role == 'Pembina' || Auth::user()->role == 'Administrator')
-                        <div class="form-group">
-                            <label for="jeniskelaminsiswa">Siswa</label>
-                            <select class="form-control @error('user_id') is-invalid @enderror" id="user_id" name="user_id">
-                                @foreach ($siswa as $sw)
-                                <option value="{{ $sw->id }}">{{ $sw->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('user_id')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        @endif
+                    <div class="form-group">
+                        <label for="nisnsiswa">NISN</label>
+                        <input type="text" class="form-control" name="nisn_siswa" placeholder="Masukan NISN" required>
+                    </div>
+                    @if (Auth::user()->role == 'Pembina' || Auth::user()->role == 'Administrator')
+                    <div class="form-group">
+                        <label for="jeniskelaminsiswa">Siswa</label>
+                        <select class="form-control @error('user_id') is-invalid @enderror" id="user_id" name="user_id">
+                            @foreach ($siswa as $sw)
+                            <option value="{{ $sw->id }}">{{ $sw->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('user_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    @endif
 
-                        @if (Auth::user()->role == 'Siswa')
-                        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                        <input type="hidden" name="email" value="{{ Auth::user()->email }}">
-                        @endif
+                    @if (Auth::user()->role == 'Siswa')
+                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                    <input type="hidden" name="email" value="{{ Auth::user()->email }}">
+                    @endif
 
-                        <div class="form-group">
-                            <label for="kelassiswa">Kelas</label>
-                            <input type="text" class="form-control" name="kelas_siswa" placeholder="Masukan Kelas" required>
-                        </div>
-                        <!-- <div class="form-group">
+                    <div class="form-group">
+                        <label for="kelassiswa">Kelas</label>
+                        <input type="text" class="form-control" name="kelas_siswa" placeholder="Masukan Kelas" required>
+                    </div>
+                    <!-- <div class="form-group">
                             <label for="emailsiswa">Email</label>
                             <input type="email" class="form-control" name="email_siswa" placeholder="Masukan Email Siswa" required>
                         </div> -->
-                        <div class="form-group">
-                            <label for="jeniskelaminsiswa">Jenis Kelamin</label>
-                            <select class="form-control" id="Jeniskelamin" name="jeniskelamin_siswa" class="@error('jeniskelamin_siswa') is-invalid @enderror">
-                                <option value="Laki-laki">Laki-laki</option>
-                                <option value="Perempuan">Perempuan</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="ekstrakulikulersiswa">Ekstrakulikuler</label>
-                            <select class="form-control" name="id_ekskul" required>
-                                @foreach($dtekskull as $ekskul)
-                                <option value="{{ $ekskul->id }}">{{ $ekskul->nama_ekskul }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="nilaisiswa">Nilai</label>
-                            <input type="text" class="form-control" name="nilai_siswa" placeholder="Masukan Nilai" required>
-                        </div>
+                    <div class="form-group">
+                        <label for="jeniskelaminsiswa">Jenis Kelamin</label>
+                        <select class="form-control" id="Jeniskelamin" name="jeniskelamin_siswa" class="@error('jeniskelamin_siswa') is-invalid @enderror">
+                            <option value="Laki-laki">Laki-laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
                     </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
-                        <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</button>
+                    <div class="form-group">
+                        <label for="ekstrakulikulersiswa">Ekstrakulikuler</label>
+                        <select class="form-control" name="id_ekskul" required>
+                            @foreach($dtekskull as $ekskul)
+                            <option value="{{ $ekskul->id }}">{{ $ekskul->nama_ekskul }}</option>
+                            @endforeach
+                        </select>
                     </div>
-                </form>
+                    <div class="form-group">
+                        <label for="nilaisiswa">Nilai</label>
+                        <input type="text" class="form-control" name="nilai_siswa" placeholder="Masukan Nilai" required>
+                    </div>
             </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
+                <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</button>
+            </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 
 @include('sweetalert::alert')

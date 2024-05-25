@@ -19,10 +19,9 @@
                 <th class="bg-yellow" width="20px" rowspan="2" style="text-align: center; vertical-align: middle;">I</th>
                 <th class="bg-red" width="20px" rowspan="2" style="text-align: center; vertical-align: middle;">S</th>
             </tr>
-            <tr>
-                <!-- <th> </th> -->
+            <tr style="height: 10px;">
                 @foreach ($pertemuanAbsensi as $tanggal)
-                    <th>per-{{ $tanggal }}</th>
+                    <th style="height: 10px; padding: 2px 5px;">per-{{ $tanggal }}</th>
                 @endforeach
             </tr>
 

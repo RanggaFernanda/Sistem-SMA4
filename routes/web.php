@@ -57,8 +57,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware(['auth', 'ceklevel:Administrator,Siswa,Pembina'])->group(function () {
     Route::resource('/dataevent', DataeventController::class);
-    // Route::get('/print/{id}',[DataeventController::class],'print')->name('print');
-    Route::get('/print/{id}', [DataeventController::class, 'print'])->name('dataevent.print');
+    Route::get('/print/{id}',[DataeventController::class,'print'])->name('print');
+    Route::get('/prestasi/print/{id}', [DataprestasiController::class, 'print'])->name('prestasi.print');
 
     Route::resource('/dataprestasi', DataprestasiController::class);
     Route::resource('/datalatihan', DatalatihanController::class);

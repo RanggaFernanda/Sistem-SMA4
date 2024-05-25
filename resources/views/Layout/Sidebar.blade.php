@@ -358,14 +358,14 @@
                     </li>
                     @endif
                     <!-- Data Pembina -->
-                    @if (Auth::user()->role == 'Administrator')
+                    <!-- @if (Auth::user()->role == 'Administrator')
                     <li class="nav-item">
                       <a href="{{ route('datapembina.index') }}" class="nav-link {{ (request()->is('datapembina*')) ? 'active' : '' }}">
                         <i class="fas fa-user"></i>
                         <p>Data Pembina</p>
                       </a>
                     </li>
-                    @endif
+                    @endif -->
 
                     <!-- Data Siswa -->
                     @if (Auth::user()->role == 'Administrator' || Auth::user()->role == 'Pembina')

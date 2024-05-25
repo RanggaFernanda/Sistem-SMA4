@@ -15,7 +15,11 @@ class DataekskulController extends Controller
      */
     public function index()
     {
-        $dtekskul = Dataekskul::all();
+        if(Auth::user()->role=="Pembina"){
+            $dtekskul = Dataekskul::where("user_id",Auth::id())->get();
+        }else{
+            $dtekskul = Dataekskul::all();
+        }
         return view('Data Master.Data Ekskul.Data_Ekskul', compact('dtekskul'));
         // dd($dtekskul);
     }

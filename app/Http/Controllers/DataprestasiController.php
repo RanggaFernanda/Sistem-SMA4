@@ -26,7 +26,10 @@ class DataprestasiController extends Controller
         // }
         // dd($dtevent);
     }
-
+    public function print($id){
+        $event = Dataevent::find($id);
+        return view('Data Event.print', compact('event'));
+    }
     /**
      * Show the form for creating a new resource.
      *
