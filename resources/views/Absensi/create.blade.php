@@ -30,7 +30,7 @@
             <tbody>
                 @foreach ($semuaSiswa as $siswa)
                     <tr>
-                        <td>{{ $siswa->nama_siswa }}</td>
+                        <td>{{ $siswa->author ? $siswa->author->name : $siswa->nama_siswa }}</td>
                         <td><input type="radio" name="absensi[{{ $siswa->id }}]" value="hadir" required></td>
                         <td><input type="radio" name="absensi[{{ $siswa->id }}]" value="izin"></td>
                         <td><input type="radio" name="absensi[{{ $siswa->id }}]" value="sakit"></td>

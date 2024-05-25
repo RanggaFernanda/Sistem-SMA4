@@ -17,5 +17,9 @@ class Daftarekskul extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+    public function ekskul()
+    {
+        return $this->belongsTo(Dataekskul::class, 'id_ekskul', 'id');
+    }
 
 }

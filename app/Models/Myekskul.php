@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Myekskul extends Model
 {
     use HasFactory;
+    
 }

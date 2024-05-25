@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DataSiswa;
 use App\Models\Dataekskul;
+use App\Models\User;
 // use DataSiswa;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\Auth;
@@ -17,13 +18,24 @@ class DatasiswaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $dtsiswa = DB::table('dataekskuls')
-        ->join('datasiswas', 'datasiswas.id_ekskul', '=', 'dataekskuls.id')
-        ->get();;
-        $dtekskull = Dataekskul::all();
-        return view('Data Siswa.Data_Siswa', compact('dtsiswa','dtekskull'));
-    }
+{
+    $dtsiswaQuery = DataSiswa::with('author')
+    ->join('dataekskuls', 'datasiswas.id_ekskul', '=', 'dataekskuls.id');
+
+if (Auth::user()->role == "Pembina") {
+    $dtsiswaQuery->where('dataekskuls.user_id', Auth::id());
+}
+
+$dtsiswa = $dtsiswaQuery
+    ->select('datasiswas.*', 'dataekskuls.nama_ekskul')
+    ->get();
+
+
+    $dtekskull = Dataekskul::all();
+    $siswa = User::where('role', 'siswa')->get();
+
+    return view('Data Siswa.Data_Siswa', compact('dtsiswa', 'dtekskull', 'siswa'));
+}
 
     /**
      * Show the form for creating a new resource.

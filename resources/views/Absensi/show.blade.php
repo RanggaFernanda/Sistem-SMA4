@@ -10,19 +10,28 @@
     <table class="table table-bordered mt-2">
         <thead>
             <tr>
-                <th>Siswa</th>
+            <th rowspan="2" style="text-align: center; vertical-align: middle;">Siswa</th>
+
                 @foreach ($tanggalAbsensi as $tanggal)
                     <th>{{ $tanggal }}</th>
                 @endforeach
-                <th class="bg-green" width="20px">H</th>
-                <th class="bg-yellow" width="20px">I</th>
-                <th class="bg-red" width="20px">S</th>
+                <th class="bg-green" width="20px" rowspan="2" style="text-align: center; vertical-align: middle;">H</th>
+                <th class="bg-yellow" width="20px" rowspan="2" style="text-align: center; vertical-align: middle;">I</th>
+                <th class="bg-red" width="20px" rowspan="2" style="text-align: center; vertical-align: middle;">S</th>
             </tr>
+            <tr>
+                <!-- <th> </th> -->
+                @foreach ($pertemuanAbsensi as $tanggal)
+                    <th>per-{{ $tanggal }}</th>
+                @endforeach
+            </tr>
+
         </thead>
         <tbody>
             @foreach ($semuaSiswa as $siswa)
                 <tr>
-                    <td>{{ $siswa->nama_siswa }}</td>
+                    <!-- <td>{{ $siswa->nama_siswa }}</td> -->
+                    <td>{{ $siswa-> author ? $siswa->author->name : $siswa->nama_siswa }}</td>
                     @foreach ($absensi[$siswa->id] as $data)
                         <td>
                             @if ($data->kehadiran == 'hadir')

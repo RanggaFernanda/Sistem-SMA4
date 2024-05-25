@@ -1,6 +1,6 @@
 @extends('Layout.App')
 @section('title', 'Data Myekskul')
-    
+
 @section('content')
 <div class="container-fluid">
 <div class="row">
@@ -26,7 +26,7 @@
         <tr>
           <th>No</th>
           <th>Nama Siswa</th>
-          <th>NISN</th>
+          <!-- <th>NISN</th>     -->
           <th>Kelas</th>
           <th>Email</th>
           <th>Jenis Kelamin</th>
@@ -36,17 +36,18 @@
         </thead>
         <tbody>
             <tr>
-              
-              
+
+
                 @foreach ($dtdaftarekskul as $dt_daftarekskul)
                  <td>{{ $loop->iteration }}</td>
-                <td>{{ $dt_daftarekskul->nama_siswa }}</td>
-                <td>{{ $dt_daftarekskul->nisn_siswa }}</td>
+                <!-- <td>{{ $dt_daftarekskul->nama_siswa }}</td> -->
+                <td>{{ $dt_daftarekskul->author ? $dt_daftarekskul->author->name : 'No Name' }}</td>
+                <!-- <td>{{ $dt_daftarekskul->nisn_siswa }}</td> -->
                 <td>{{ $dt_daftarekskul->kelas_siswa }}</td>
                 <td>{{ $dt_daftarekskul->email_siswa }}</td>
                 <td>{{ $dt_daftarekskul->jeniskelamin_siswa }}</td>
-                <td>{{ $dt_daftarekskul->ekstrakulikuler_siswa }}</td>
-                
+                <td>{{ $dt_daftarekskul->ekskul ? $dt_daftarekskul->ekskul->nama_ekskul : 'No Ekskul' }}</td>
+
                   <td>
                     <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#_detail-{{$dt_daftarekskul->id}}"><i class="fas fa-eye"></i> </a>
                     <a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#_edit-{{ $dt_daftarekskul->id }}"><i class="fas fa-edit" title="Edit"></i></a>
@@ -81,7 +82,7 @@
                                             <dd class="col-sm-8">{{ $dt_daftarekskul->jeniskelamin_siswa}}</dd>
                                             <dt class="col-sm-4">Ekstrakulikuler</dt>
                                             <dd class="col-sm-8">{{ $dt_daftarekskul->ekstrakulikuler_siswa}}</dd>
-                                            
+
                                         </dl>
                                     </div>
                                     <input type="hidden" name="user_id" value="{{ Auth::id() }}">
@@ -137,4 +138,4 @@
     });
   });
 </script>
-@endsection
+};

@@ -56,12 +56,17 @@ class AbsensiController extends Controller
     public function show($id)
 {
     // Mendapatkan semua siswa
-    $semuaSiswa = Datasiswa::where('id_ekskul', $id)->get();
+    $semuaSiswa = Datasiswa::with('author')->where('id_ekskul', $id)->get();
     $idEkskul = $id;
 
     // Mendapatkan semua tanggal absensi untuk ekskul dengan id yang diberikan
     $tanggalAbsensi = Absensi::where('id_ekskul', $id)->select('tanggal')->distinct()->orderBy('tanggal')->pluck('tanggal');
-
+    // $pertemuanAbsensi = Absensi::where('id_ekskul', $id)->select('pertemuan')->distinct()->orderBy('tanggal')->pluck('tanggal');
+    $pertemuanAbsensi = Absensi::where('id_ekskul', $id)
+    ->select('pertemuan', 'tanggal')  // Include 'tanggal' to resolve the error
+    ->distinct()
+    ->orderBy('tanggal')
+    ->pluck('pertemuan');
     // Mendapatkan data absensi untuk setiap siswa untuk ekskul dengan id yang diberikan
     $absensi = [];
     $jumlahHadir = [];
@@ -79,7 +84,7 @@ class AbsensiController extends Controller
         $jumlahSakit[$siswa->id] = $dataAbsensi->where('kehadiran', 'sakit')->count();
     }
 
-    return view('absensi.show', compact('semuaSiswa', 'tanggalAbsensi', 'absensi', 'jumlahHadir', 'jumlahIzin', 'jumlahSakit', 'idEkskul'));
+    return view('absensi.show', compact('semuaSiswa', 'tanggalAbsensi','pertemuanAbsensi', 'absensi', 'jumlahHadir', 'jumlahIzin', 'jumlahSakit', 'idEkskul'));
 }
 
     public function create($id)
