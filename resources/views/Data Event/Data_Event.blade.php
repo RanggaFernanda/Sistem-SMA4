@@ -363,7 +363,7 @@
       timer: 3000
         })};
 </script> -->
-<script>
+<!-- <script>
   $(function(){
     var Toast = Swal.mixin({
       toast: true,
@@ -378,7 +378,7 @@
       title: 'Absensi berhasil disimpan'
     });
   });
-</script>
+</script> -->
 
 <!--<script>
 // { document.getElementById('foto_kegiatan').addEventListener('change', function() {

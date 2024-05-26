@@ -6,6 +6,7 @@ use App\Models\Daftarekskul;
 use App\Models\Myekskul;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class MyekskulController extends Controller
 {
@@ -94,7 +95,20 @@ class MyekskulController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+{
+    try {
+        DB::transaction(function () use ($id) {
+            // Delete related records from the absensi table
+            DB::table('absensis')->where('id_siswa', $id)->delete();
+
+            DaftarEkskul::findOrFail($id)->delete();
+        });
+
+        return redirect()->route('myekskul.index')->with('success', 'Data berhasil dihapus.');
+    } catch (\Exception $e) {
+        // Handle the exception if something goes wrong
+        return redirect()->route('myekskul.index')->with('error', 'Terjadi kesalahan saat menghapus data.');
     }
+}
+
 }
