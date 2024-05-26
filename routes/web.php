@@ -93,6 +93,7 @@ Route::middleware(['auth', 'ceklevel:Administrator,Pembina'])->group(function ()
     Route::get('absensi/create/{id}', [AbsensiController::class, 'create'])->name('absensi.create');
     Route::post('/submit-absensi', [AbsensiController::class, 'store'])->name('submit-absensi');
     Route::resource('/datasiswa', DatasiswaController::class);
+    Route::put('/datasiswa/acc/{id}',[DatasiswaController::class,'acc'])->name('datasiswa.acc');
     Route::post('/datasiswa/store', [DatasiswaController::class, 'store'])->name('datasiswa-simpan');
     // Route::delete('/daftarekskul/{id}', [DaftarEkskulController::class, 'destroy'])->name('datasiswa.destroy');
     // Route::resource('myekskul', DaftarEkskulController::class);

@@ -151,5 +151,13 @@ $dtsiswa = $dtsiswaQuery
         $dtsiswa->delete();
         return redirect()->back()->with('success', 'Berhasil Dihapus');
     }
+    public function acc($id)
+{
+    $datasiswa = DataSiswa::findOrFail($id);
+    $datasiswa->status = "acc";
+    $datasiswa->save();
+
+    return redirect()->back()->with('success', 'Status berhasil diubah menjadi ACC');
+}
 
 }

@@ -47,7 +47,14 @@
                                 <td>{{ $dt_daftarekskul->email_siswa }}</td>
                                 <td>{{ $dt_daftarekskul->jeniskelamin_siswa }}</td>
                                 <td>{{ $dt_daftarekskul->ekskul ? $dt_daftarekskul->ekskul->nama_ekskul : 'No Ekskul' }}</td>
-                                <td>{{ $dt_daftarekskul->validasi }}</td>
+                                <td>
+    @if($dt_daftarekskul->status == "nonacc")
+        <button class='btn btn-warning'>Belum ACC</button>
+    @else
+        <button class="btn btn-success">ACC</button>
+    @endif
+</td>
+
                                 <td>
                                     <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#_detail-{{ $dt_daftarekskul->id }}"><i class="fas fa-eye" title="Detail"></i></a>
                                     {{-- <a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#_edit-{{ $dt_daftarekskul->id }}"><i class="fas fa-edit" title="Edit"></i></a>

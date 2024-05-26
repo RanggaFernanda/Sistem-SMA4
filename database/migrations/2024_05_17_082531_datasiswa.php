@@ -23,12 +23,14 @@ class DataSiswa extends Migration
             $table->string('email_siswa')->nullable();
             $table->string('jeniskelamin_siswa')->nullable();
             $table->string('id_ekskul')->nullable();
+            $table->enum('status',['acc','nonacc'])->default('nonacc');
+            // $table->enum('kehadiran', ['hadir', 'absen', 'izin', 'sakit'])->default('absen');
             $table->string('nilai_siswa')->nullable();
 
             $table->timestamps();
         });
     }
-    
+
 
     /**
      * Reverse the migrations.

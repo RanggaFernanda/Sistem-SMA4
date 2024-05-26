@@ -56,7 +56,10 @@ class AbsensiController extends Controller
     public function show($id)
 {
     // Mendapatkan semua siswa
-    $semuaSiswa = Datasiswa::with('author')->where('id_ekskul', $id)->get();
+    $semuaSiswa = Datasiswa::with('author')
+    ->where('status','acc')
+    ->where('id_ekskul', $id)
+    ->get();
     $idEkskul = $id;
 
     // Mendapatkan semua tanggal absensi untuk ekskul dengan id yang diberikan

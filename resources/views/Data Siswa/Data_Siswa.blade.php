@@ -33,6 +33,7 @@
                                 <th>Jenis Kelamin</th>
                                 <th>Ekstrakulikuler</th>
                                 <th>Nilai</th>
+                                <th>validasi</th>
 
                                 <th>Action</th>
                             </tr>
@@ -48,14 +49,28 @@
                                 <td>{{ $dt_siswa->jeniskelamin_siswa }}</td>
                                 <td>{{ $dt_siswa->nama_ekskul }}</td>
                                 <td>{{ $dt_siswa->nilai_siswa }}</td>
+                                <td>
+    @if($dt_siswa->status == "nonacc")
+        <form action="{{ route('datasiswa.acc', $dt_siswa->id) }}" method="POST" style="display:inline;">
+            @csrf
+            @method('PUT')
+            <button type="submit" class='btn btn-warning'>Belum ACC</button>
+        </form>
+    @else
+        <button class="btn btn-success" disabled>ACC</button>
+    @endif
+</td>
+
                                 <td style="display: flex;justify-content: space-between">
                                     @if (Auth::user()->role == 'Pembina' || Auth::user()->role == "Administrator")
                                     <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#_detail-{{ $dt_siswa->id }}">
                                         <i class="fas fa-eye" title="Detail"></i>
                                     </a>
+                                    @if($dt_siswa->status=="acc")
                                     <a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#_edit-{{ $dt_siswa->id }}">
                                         <i class="fas fa-edit" title="Edit"></i>Beri Nilai
                                     </a>
+                                    @endif
                                     <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#_hapus-{{ $dt_siswa->id }}">
                                         <i class="fas fa-trash" title="Delete"></i>
                                     </a>
