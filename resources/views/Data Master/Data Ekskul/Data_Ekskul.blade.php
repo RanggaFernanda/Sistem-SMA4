@@ -177,7 +177,18 @@
                             <option value="non-akademik">Non-Akademik</option>
                         </select>
                         <br>
+                        @if (Auth::user()->role=='Administrator')
+                        <label for="user_id">Pembina</label>
+                        <select class="form-control" id="user_id" name="user_id" class="@error('user_id') is-invalid @enderror">
+                            @foreach ($dtpembina as $pembina)
+                            <option value="{{$pembina->id}}">{{$pembina->name}}</option>   
+                            @endforeach
+                            
+                            
+                        </select>
+                        @else
                         <input type="hidden" name="user_id" value="{{Auth::id()}}">
+                        @endif
                         <label for="pelatihEkskul">Nama Pelatih</label>
                         <input class="form-control" type="text" id="id" name="pelatih_ekskul" class="@error('nama_ekskul') is-invalid @enderror" placeholder="Masukan Nama Pelatih">
                     </div>

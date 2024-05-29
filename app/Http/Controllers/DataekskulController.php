@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dataekskul;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,11 +18,13 @@ class DataekskulController extends Controller
     {
         if(Auth::user()->role=="Pembina"){
             $dtekskul = Dataekskul::where("user_id",Auth::id())->get();
+
         }else{
             $dtekskul = Dataekskul::all();
         }
-        return view('Data Master.Data Ekskul.Data_Ekskul', compact('dtekskul'));
-        // dd($dtekskul);
+        $dtpembina = User::where('role','Pembina')->get();
+        return view('Data Master.Data Ekskul.Data_Ekskul', compact('dtekskul', 'dtpembina'));
+        // dd($dtpembina);
     }
 
     /**

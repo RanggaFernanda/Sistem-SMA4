@@ -79,8 +79,9 @@ $dtsiswa = $dtsiswaQuery
     // $dtpembina->save();
 
     return redirect()->route('datasiswa.index')->with('success', 'Berhasil Dibuat');
+    // dd($request);
     }
-
+    
     /**
      * Display the specified resource.
      *
