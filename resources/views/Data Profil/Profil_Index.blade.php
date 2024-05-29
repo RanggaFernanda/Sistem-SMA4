@@ -67,7 +67,7 @@
                     <div class="form-group row">
                       <label for="inputExperience" class="col-sm-3 col-form-label">Alamat</label>
                       <div class="col-sm-9">
-                        <textarea class="form-control" id="inputExperience" disabled placeholder="Experience">{{ Auth::user()->alamat }}</textarea>
+                        <textarea class="form-control" id="inputExperience" disabled placeholder="Masukkan Alamat">{{ Auth::user()->alamat }}</textarea>
                       </div>
                     </div>
                     <div class="card-footer">

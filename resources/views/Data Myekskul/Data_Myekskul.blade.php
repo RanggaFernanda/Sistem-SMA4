@@ -16,7 +16,7 @@
     <div class="card-header">
       <h3 class="card-title">Data Seluruh MyEkstrakurikuler</h3>
       <div class="card-tools">
-        <a href="#" class="btn btn-success btn-sm"><i class="fas fa-file-excel" title="Download Excel"></i> Export Excel</a>
+        {{-- <a href="#" class="btn btn-success btn-sm"><i class="fas fa-file-excel" title="Download Excel"></i> Export Excel</a> --}}
       </div>
     </div>
     <!-- /.card-header -->
@@ -50,7 +50,7 @@
 
                   <td>
                     <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#_detail-{{$dt_daftarekskul->id}}"><i class="fas fa-eye"></i> </a>
-                    <a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#_edit-{{ $dt_daftarekskul->id }}"><i class="fas fa-edit" title="Edit"></i></a>
+                    {{-- <a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#_edit-{{ $dt_daftarekskul->id }}"><i class="fas fa-edit" title="Edit"></i></a> --}}
                                         <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#_hapus-{{ $dt_daftarekskul->id }}"><i class="fas fa-trash" title="Delete"></i></a>
                   </td>
                 </tr>
@@ -97,10 +97,10 @@
                                     @method("GET")
                                     <div class="card-body">
                                         <dl class="row">
-                                            <dt class="col-sm-4">Nama Siswa</dt>
+                                            {{-- <dt class="col-sm-4">Nama Siswa</dt>
                                             <dd class="col-sm-8">{{ $dt_daftarekskul->nama_siswa }}</dd>
                                             <dt class="col-sm-4">NISN</dt>
-                                            <dd class="col-sm-8">{{ $dt_daftarekskul->nisn_siswa }}</dd>
+                                            <dd class="col-sm-8">{{ $dt_daftarekskul->nisn_siswa }}</dd> --}}
                                             <dt class="col-sm-4">Kelas</dt>
                                             <dd class="col-sm-8">{{ $dt_daftarekskul->kelas_siswa }}</dd>
                                             <dt class="col-sm-4">Email</dt>
@@ -108,15 +108,15 @@
                                             <dt class="col-sm-4">Jenis Kelamin</dt>
                                             <dd class="col-sm-8">{{ $dt_daftarekskul->jeniskelamin_siswa}}</dd>
                                             <dt class="col-sm-4">Ekstrakulikuler</dt>
-                                            <dd class="col-sm-8">{{ $dt_daftarekskul->ekstrakulikuler_siswa}}</dd>
+                                            <dd class="col-sm-8">{{ $dt_daftarekskul->ekskul ? $dt_daftarekskul->ekskul->nama_ekskul : 'No Ekskul'}}</dd>
 
                                         </dl>
                                     </div>
                                     <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                                 </div>
                 <div class="modal-footer justify-content-between">
-                  <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
-                  <a href="#" class="btn btn-secondary btn-sm"><i class="fas fa-print"></i> Print</a>
+                  {{-- <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fas fa-times"></i> Close</button> --}}
+                  {{-- <a href="#" class="btn btn-secondary btn-sm"><i class="fas fa-print"></i> Print</a> --}}
                   </form>
                 </div>
               </div>

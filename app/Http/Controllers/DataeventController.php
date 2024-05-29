@@ -83,7 +83,7 @@ class DataeventController extends Controller
         }
         $dataevent->save();
 
-        return redirect()->route('dataevent.index')->with('success', 'Alhamdulillah Berhasil Dibuat');
+        return redirect()->route('dataevent.index')->with('success', 'Berhasil Ditambah');
     }
 
     /**
@@ -150,7 +150,7 @@ class DataeventController extends Controller
         }
         $dataevent->update();
 
-        return redirect()->route('dataevent.index')->with('success', 'Alhamdulillah Berhasil Diupdate');
+        return redirect()->route('dataevent.index')->with('success', 'Berhasil Diupdate');
     }
 
     /**
@@ -168,6 +168,6 @@ class DataeventController extends Controller
                 File::delete($destination);
             }
         $dtevent->delete();
-        return redirect()->back()->with('success', 'Alhamdulillah Berhasil Dihapus');
+        return redirect()->back()->with('success', 'Berhasil Dihapus');
     }
 }

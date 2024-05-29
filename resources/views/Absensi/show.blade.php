@@ -17,7 +17,8 @@
                 @endforeach
                 <th class="bg-green" width="20px" rowspan="2" style="text-align: center; vertical-align: middle;">H</th>
                 <th class="bg-yellow" width="20px" rowspan="2" style="text-align: center; vertical-align: middle;">I</th>
-                <th class="bg-red" width="20px" rowspan="2" style="text-align: center; vertical-align: middle;">S</th>
+                <th class="bg-blue" width="20px" rowspan="2" style="text-align: center; vertical-align: middle;">S</th>
+                <th class="bg-red" width="20px" rowspan="2" style="text-align: center; vertical-align: middle;">A</th>
             </tr>
             <tr style="height: 10px;">
                 @foreach ($pertemuanAbsensi as $tanggal)
@@ -39,6 +40,8 @@
                                 <span class="badge badge-warning">Sakit</span>
                             @elseif ($data->kehadiran == 'izin')
                                 <span class="badge badge-primary">Izin</span>
+                                @elseif ($data->kehadiran == 'alpa')
+                                <span class="badge badge-danger">Alpa</span>
                             @else
                                 <span class="badge badge-light"></span>
                             @endif
@@ -47,6 +50,8 @@
                     <td>{{ $jumlahHadir[$siswa->id] }}</td>
                     <td>{{ $jumlahIzin[$siswa->id] }}</td>
                     <td>{{ $jumlahSakit[$siswa->id] }}</td>
+                    <td>{{ $jumlahAlpa[$siswa->id] }}</td>
+
                 </tr>
             @endforeach
         </tbody>

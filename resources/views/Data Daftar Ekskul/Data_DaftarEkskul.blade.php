@@ -16,7 +16,7 @@
                 <div class="card-header">
                     <h3 class="card-title">Data Daftar Ekskul</h3>
                     <div class="card-tools">
-                        <a href="#" class="btn btn-success btn-sm"><i class="fas fa-file-excel" title="Download Excel"></i> Export Excel</a>
+                        {{-- <a href="#" class="btn btn-success btn-sm"><i class="fas fa-file-excel" title="Download Excel"></i> Export Excel</a> --}}
                         <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default"><i class="fas fa-plus" title="Tambah Data"></i> Tambah Data</a>
                     </div>
                 </div>
@@ -75,10 +75,10 @@
                                         <div class="modal-body">
                                             <div class="card-body">
                                                 <dl class="row">
-                                                    <dt class="col-sm-4">Nama Siswa</dt>
+                                                    {{-- <dt class="col-sm-4">Nama Siswa</dt>
                                                     <dd class="col-sm-8">{{ $dt_daftarekskul->nama_siswa }}</dd>
                                                     <dt class="col-sm-4">NISN</dt>
-                                                    <dd class="col-sm-8">{{ $dt_daftarekskul->nisn_siswa }}</dd>
+                                                    <dd class="col-sm-8">{{ $dt_daftarekskul->nisn_siswa }}</dd> --}}
                                                     <dt class="col-sm-4">Kelas</dt>
                                                     <dd class="col-sm-8">{{ $dt_daftarekskul->kelas_siswa }}</dd>
                                                     <dt class="col-sm-4">Email</dt>
@@ -92,8 +92,8 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer justify-content-between">
-                                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
-                                            <a href="#" class="btn btn-secondary btn-sm"><i class="fas fa-print"></i> Print</a>
+                                            {{-- <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
+                                            <a href="#" class="btn btn-secondary btn-sm"><i class="fas fa-print"></i> Print</a> --}}
                                         </div>
                                     </div>
                                 </div>

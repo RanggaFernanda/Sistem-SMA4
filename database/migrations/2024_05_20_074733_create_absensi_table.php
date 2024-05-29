@@ -14,7 +14,7 @@ class CreateAbsensiTable extends Migration
             $table->unsignedBigInteger('id_siswa');
             $table->unsignedBigInteger('id_ekskul');
             $table->date('tanggal');
-            $table->enum('kehadiran', ['hadir', 'absen', 'izin', 'sakit'])->default('absen');
+            $table->enum('kehadiran', ['hadir', 'alpa', 'izin', 'sakit'])->default('alpa');
             $table->integer('pertemuan')->nullable();
             $table->timestamps();
             $table->foreign('id_siswa')->references('id')->on('datasiswas');

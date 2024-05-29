@@ -16,13 +16,16 @@
                 <div class="card-header">
                     <h3 class="card-title">Data Seluruh Siswa</h3>
                     <div class="card-tools">
-                        <a href="#" class="btn btn-success btn-sm"><i class="fas fa-file-excel" title="Download Excel"></i> Export Excel</a>
+                        <td>
+
+                        </td>
+                        {{-- <a href="#" class="btn btn-success btn-sm"><i class="fas fa-file-excel" title="Download Excel"></i> Export Excel</a> --}}
                         <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default"><i class="fas fa-plus" title="Tambah Data"></i> Tambah Data</a>
                     </div>
                 </div>
 
                 <div class="card-body table-responsive p-0">
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table id="example1" class="table table-bordered table-striped table-sm" style="width: 100%; font-size: 0.875rem;">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -33,8 +36,7 @@
                                 <th>Jenis Kelamin</th>
                                 <th>Ekstrakulikuler</th>
                                 <th>Nilai</th>
-                                <th>validasi</th>
-
+                                <th>Validasi</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -50,23 +52,22 @@
                                 <td>{{ $dt_siswa->nama_ekskul }}</td>
                                 <td>{{ $dt_siswa->nilai_siswa }}</td>
                                 <td>
-    @if($dt_siswa->status == "nonacc")
-        <form action="{{ route('datasiswa.acc', $dt_siswa->id) }}" method="POST" style="display:inline;">
-            @csrf
-            @method('PUT')
-            <button type="submit" class='btn btn-warning'>Belum ACC</button>
-        </form>
-    @else
-        <button class="btn btn-success" disabled>ACC</button>
-    @endif
-</td>
-
-                                <td style="display: flex;justify-content: space-between">
-                                    @if (Auth::user()->role == 'Pembina' || Auth::user()->role == "Administrator")
+                                    @if($dt_siswa->status == "nonacc")
+                                    <form action="{{ route('datasiswa.acc', $dt_siswa->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class='btn btn-warning btn-sm'>Belum ACC</button>
+                                    </form>
+                                    @else
+                                    <button class="btn btn-success btn-sm" disabled>ACC</button>
+                                    @endif
+                                </td>
+                                <td style="display: flex; justify-content: space-between">
+                                    @if (Auth::user()->role == 'Pembina' || Auth::user()->role == 'Administrator')
                                     <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#_detail-{{ $dt_siswa->id }}">
                                         <i class="fas fa-eye" title="Detail"></i>
                                     </a>
-                                    @if($dt_siswa->status=="acc")
+                                    @if ($dt_siswa->status == "acc")
                                     <a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#_edit-{{ $dt_siswa->id }}">
                                         <i class="fas fa-edit" title="Edit"></i>Beri Nilai
                                     </a>
@@ -75,9 +76,21 @@
                                         <i class="fas fa-trash" title="Delete"></i>
                                     </a>
                                     @endif
-
-
+                                </td>
+                                {{-- <td style="display: flex; justify-content: space-around; align-items: center">
+                                    @if (Auth::user()->role == 'Administrator') 
+                                        <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#_detail-{{ $dt_siswa->id }}">
+                                            <i class="fas fa-eye" title="Detail"></i>
+                                        </a>
+                                    
+                                    <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#_hapus-{{ $dt_siswa->id }}">
+                                        <i class="fas fa-trash" title="Delete"></i>
+                                    </a>
+                                    @endif
+                                </td> --}}
+                                
                             </tr>
+
 
                             <!-- Modal Detail -->
                             <div class="modal fade" id="_detail-{{ $dt_siswa->id }}">
@@ -92,27 +105,27 @@
                                         <div class="modal-body">
                                             <div class="card-body">
                                                 <dl class="row">
-                                                    <dt class="col-sm-4">Nama Siswa</dt>
+                                                    {{-- <dt class="col-sm-4">Nama Siswa</dt>
                                                     <dd class="col-sm-8">{{ $dt_siswa->nama_siswa }}</dd>
                                                     <dt class="col-sm-4">NISN</dt>
-                                                    <dd class="col-sm-8">{{ $dt_siswa->nisn_siswa }}</dd>
+                                                    <dd class="col-sm-8">{{ $dt_siswa->nisn_siswa }}</dd> --}}
                                                     <dt class="col-sm-4">Kelas</dt>
                                                     <dd class="col-sm-8">{{ $dt_siswa->kelas_siswa }}</dd>
                                                     <dt class="col-sm-4">Email</dt>
                                                     <dd class="col-sm-8">{{ $dt_siswa->email_siswa }}</dd>
                                                     <dt class="col-sm-4">Jenis Kelamin</dt>
-                                                    <dd class="col-sm-8">{{ $dt_siswa->jeniskelamin_siswa}}</dd>
+                                                    <dd class="col-sm-8">{{ $dt_siswa->jeniskelamin_siswa }}</dd>
                                                     <dt class="col-sm-4">Ekstrakulikuler</dt>
-                                                    <dd class="col-sm-8">{{ $dt_siswa->nama_ekskul}}</dd>
+                                                    <dd class="col-sm-8">{{ $dt_siswa->nama_ekskul }}</dd>
                                                     <dt class="col-sm-4">Nilai</dt>
                                                     <dd class="col-sm-8">{{ $dt_siswa->nilai_siswa }}</dd>
                                                 </dl>
                                             </div>
                                         </div>
-                                        <div class="modal-footer justify-content-between">
+                                        {{-- <div class="modal-footer justify-content-between">
                                             <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
                                             <a href="#" class="btn btn-secondary btn-sm"><i class="fas fa-print"></i> Print</a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -131,30 +144,6 @@
                                                 @csrf
                                                 @method('PUT')
                                                 <div class="card-body">
-                                                    <!-- <div class="form-group">
-                            <label for="namasiswa">Nama Siswa</label>
-                            <input type="text" class="form-control" name="nama_siswa" value="{{ $dt_siswa->nama_siswa }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="nisnsiswa">NISN</label>
-                            <input type="text" class="form-control" name="nisn_siswa" value="{{ $dt_siswa->nisn_siswa }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="kelassiswa">Kelas</label>
-                            <input type="text" class="form-control" name="kelas_siswa" value="{{ $dt_siswa->kelas_siswa }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="emailsiswa">Email</label>
-                            <input type="email" class="form-control" name="email_siswa" value="{{ $dt_siswa->email_siswa }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="jeniskelaminsiswa">Jenis Kelamin</label>
-                            <input type="text" class="form-control" name="jeniskelamin_siswa" value="{{ $dt_siswa->jeniskelamin_siswa }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="ekstrakulikulersiswa">Ekstrakulikuler</label>
-                            <input type="text" class="form-control" name="ekstrakulikuler_siswa" value="{{ $dt_siswa->nama_ekskul }}" required>
-                        </div> -->
                                                     <div class="form-group">
                                                         <label for="nilaisiswa">Nilai</label>
                                                         <input type="text" class="form-control" name="nilai_siswa" value="{{ $dt_siswa->nilai_siswa }}" required>
@@ -169,7 +158,6 @@
                                     </div>
                                 </div>
                             </div>
-
 
                             <!-- Modal Hapus -->
                             <div class="modal fade" id="_hapus-{{ $dt_siswa->id }}">
@@ -217,15 +205,10 @@
             <div class="modal-body">
                 <form method="POST" action="{{ route('datasiswa.store') }}" enctype="multipart/form-data">
                     @csrf
-                    <!-- <div class="card-body">
-                        <div class="form-group">
-                            <label for="namasiswa">Nama Siswa</label>
-                            <input type="text" class="form-control" name="nama_siswa" placeholder="Masukan Nama Siswa" required>
-                        </div> -->
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="nisnsiswa">NISN</label>
                         <input type="text" class="form-control" name="nisn_siswa" placeholder="Masukan NISN" required>
-                    </div>
+                    </div> --}}
                     @if (Auth::user()->role == 'Pembina' || Auth::user()->role == 'Administrator')
                     <div class="form-group">
                         <label for="jeniskelaminsiswa">Siswa</label>
@@ -237,7 +220,6 @@
                         @error('user_id')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                    </div>
                     @endif
 
                     @if (Auth::user()->role == 'Siswa')
@@ -249,10 +231,6 @@
                         <label for="kelassiswa">Kelas</label>
                         <input type="text" class="form-control" name="kelas_siswa" placeholder="Masukan Kelas" required>
                     </div>
-                    <!-- <div class="form-group">
-                            <label for="emailsiswa">Email</label>
-                            <input type="email" class="form-control" name="email_siswa" placeholder="Masukan Email Siswa" required>
-                        </div> -->
                     <div class="form-group">
                         <label for="jeniskelaminsiswa">Jenis Kelamin</label>
                         <select class="form-control" id="Jeniskelamin" name="jeniskelamin_siswa" class="@error('jeniskelamin_siswa') is-invalid @enderror">
@@ -288,17 +266,14 @@
 
 @section('javascript')
 <script>
-    $(function() {
-        var Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
-        });
-
-        $("#example1").DataTable({
-            "responsive": true,
+    $(document).ready(function() {
+        $('#example1').DataTable({
+            "searching": true,
+            "paging": true,
+            "info": true,
             "autoWidth": false,
+            "responsive": true,
+            "pageLength": 10 // This limits the table to show only 10 entries per page
         });
     });
 </script>

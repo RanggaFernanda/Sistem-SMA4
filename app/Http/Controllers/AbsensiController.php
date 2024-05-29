@@ -75,7 +75,7 @@ class AbsensiController extends Controller
     $jumlahHadir = [];
     $jumlahIzin = [];
     $jumlahSakit = [];
-
+    $jumlahAlpa = [];
     foreach ($semuaSiswa as $siswa) {
         // Query untuk mendapatkan absensi hanya untuk ekskul dengan id yang diberikan
         $dataAbsensi = Absensi::where('id_siswa', $siswa->id)->where('id_ekskul', $id)->get();
@@ -85,15 +85,16 @@ class AbsensiController extends Controller
         $jumlahHadir[$siswa->id] = $dataAbsensi->where('kehadiran', 'hadir')->count();
         $jumlahIzin[$siswa->id] = $dataAbsensi->where('kehadiran', 'izin')->count();
         $jumlahSakit[$siswa->id] = $dataAbsensi->where('kehadiran', 'sakit')->count();
+        $jumlahAlpa[$siswa->id] = $dataAbsensi->where('kehadiran', 'alpa')->count();
     }
 
-    return view('absensi.show', compact('semuaSiswa', 'tanggalAbsensi','pertemuanAbsensi', 'absensi', 'jumlahHadir', 'jumlahIzin', 'jumlahSakit', 'idEkskul'));
+    return view('absensi.show', compact('semuaSiswa', 'tanggalAbsensi','pertemuanAbsensi', 'absensi', 'jumlahHadir', 'jumlahIzin', 'jumlahSakit','jumlahAlpa', 'idEkskul'));
 }
 
     public function create($id)
     {
         // Mendapatkan semua siswa yang terdaftar dalam ekskul dengan id tertentu
-        $semuaSiswa = DataSiswa::where('id_ekskul', $id)->get();
+        $semuaSiswa = DataSiswa::with('author')->where('status','acc')->where('id_ekskul', $id)->get();
         $idEkskul = $id;
 
         return view('Absensi.create', compact('semuaSiswa','idEkskul'));
@@ -105,7 +106,7 @@ class AbsensiController extends Controller
         'tanggal' => 'required|date',
         'pertemuan' => 'required|integer',
         'absensi' => 'required|array',
-        'absensi.*' => 'required|in:hadir,izin,sakit'
+        'absensi.*' => 'required|in:hadir,izin,sakit,alpa'
     ]);
 
     $idEkskul = $request->input('id_ekskul');

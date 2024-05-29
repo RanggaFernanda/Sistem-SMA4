@@ -15,8 +15,8 @@
   @enderror
     <div class="card-header">
       <h3 class="card-title">Data Ekskul Berprestasi</h3>
-      <div class="card-tools">
-        <a href="#" class="btn btn-success btn-sm"><i class="fas fa-file-excel" title="Download Excel"></i> Export Excel</a>
+      {{-- <div class="card-tools">
+        <a href="#" class="btn btn-success btn-sm"><i class="fas fa-file-excel" title="Download Excel"></i> Export Excel</a> --}}
       </div>
     </div>
     <!-- /.card-header -->

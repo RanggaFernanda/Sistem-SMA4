@@ -27,8 +27,8 @@
             <p>SMA Negeri 4 Kota Bengkulu</p>
           </div>
           <div class="col-lg-3">
-            <h3>Alamat</h3>
-            <p>Jln. Zainul Arifin, Kel. Timur Indah Kec. Singaran Pati, Kota Bengkulu Prov. Bengkulu</p>
+            <h3>Ekstrakulikuler</h3>
+            <p>Siswa-siswa yang sangat berprestasi dalam pengembangan kemampuan dalam ekskul</p>
           </div>
         </div>
       </div>
@@ -75,7 +75,7 @@
       <div class="container-fluid" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Galeri Ekstrakurikuler</h2>
+          <h2>Galeri Ekstrakulikuler</h2>
           <p>Galeri Kegiatan Ekskul SMA Negeri 4 Kota Bengkulu</p>
         </div>
 
@@ -103,10 +103,10 @@
       <div class="container-fluid venue-gallery-container" data-aos="fade-up" data-aos-delay="100">
         <div class="row g-0">
 
-          {{-- <div class="col-lg-3 col-md-4">
+          <div class="col-lg-3 col-md-4">
             <div class="venue-gallery">
               <a href="{{ asset('Frontend') }}/assets/img/venue-gallery/1.jpg" class="glightbox" data-gall="venue-gallery">
-                <img src="{{ asset('Frontend') }}/assets/img/venue-gallery/1.jpg" alt="" class="img-fluid">
+                <img src="{{ asset('Frontend') }}/assets/img/db.jpg" alt="" class="img-fluid">
               </a>
             </div>
           </div>
@@ -114,7 +114,7 @@
           <div class="col-lg-3 col-md-4">
             <div class="venue-gallery">
               <a href="{{ asset('Frontend') }}/assets/img/venue-gallery/2.jpg" class="glightbox" data-gall="venue-gallery">
-                <img src="{{ asset('Frontend') }}/assets/img/venue-gallery/2.jpg" alt="" class="img-fluid">
+                <img src="{{ asset('Frontend') }}/assets/img/paskib.jpg" alt="" class="img-fluid">
               </a>
             </div>
           </div>
@@ -122,7 +122,7 @@
           <div class="col-lg-3 col-md-4">
             <div class="venue-gallery">
               <a href="{{ asset('Frontend') }}/assets/img/venue-gallery/3.jpg" class="glightbox" data-gall="venue-gallery">
-                <img src="{{ asset('Frontend') }}/assets/img/venue-gallery/3.jpg" alt="" class="img-fluid">
+                <img src="{{ asset('Frontend') }}/assets/img/pramuka.jpg" alt="" class="img-fluid">
               </a>
             </div>
           </div>
@@ -130,12 +130,12 @@
           <div class="col-lg-3 col-md-4">
             <div class="venue-gallery">
               <a href="{{ asset('Frontend') }}/assets/img/venue-gallery/4.jpg" class="glightbox" data-gall="venue-gallery">
-                <img src="{{ asset('Frontend') }}/assets/img/venue-gallery/4.jpg" alt="" class="img-fluid">
+                <img src="{{ asset('Frontend') }}/assets/img/taekwondo.jpg" alt="" class="img-fluid">
               </a>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-4">
+          {{-- <div class="col-lg-3 col-md-4">
             <div class="venue-gallery">
               <a href="{{ asset('Frontend') }}/assets/img/venue-gallery/5.jpg" class="glightbox" data-gall="venue-gallery">
                 <img src="{{ asset('Frontend') }}/assets/img/venue-gallery/5.jpg" alt="" class="img-fluid">
@@ -165,7 +165,7 @@
                 <img src="{{ asset('Frontend') }}/assets/img/venue-gallery/8.jpg" alt="" class="img-fluid">
               </a>
             </div>
-          </div> --}}
+          </div>  --}}
 
         </div>
       </div>

@@ -55,72 +55,34 @@
                 </div>
                 @endif
             </div>
-
-            <!-- Main row -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Grafik Data</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <canvas id="myChart"></canvas>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="percentage-display">
-                                        <h4>Persentase Data</h4>
-                                        <ul>
-                                            @if(isset($totalData) && $totalData > 0)
-                                            <li>Data Seluruh Pembina: {{ number_format(($dataPembina / $totalData) * 100, 2) }}%</li>
-                                            <li>Data Seluruh Event: {{ number_format(($dataEvent / $totalData) * 100, 2) }}%</li>
-                                            <li>Data Seluruh Prestasi: {{ number_format(($dataPrestasi / $totalData) * 100, 2) }}%</li>
-                                            <li>Data Seluruh Ekskul: {{ number_format(($dataEkskul / $totalData) * 100, 2) }}%</li>
-                                            @else
-                                            <li>No data available</li>
-                                            @endif
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!-- Main row -->
+            
+<div class="card-body">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="percentage-display">
+                <h4>Persentase Data</h4>
+                <ul>
+                    @if(isset($totalData) && $totalData > 0)
+                    <li>Data Seluruh Pembina: {{ number_format(($dataPembina / $totalData) * 100, 2) }}%</li>
+                    <li>Data Seluruh Event: {{ number_format(($dataEvent / $totalData) * 100, 2) }}%</li>
+                    <li>Data Seluruh Prestasi: {{ number_format(($dataPrestasi / $totalData) * 100, 2) }}%</li>
+                    <li>Data Seluruh Ekskul: {{ number_format(($dataEkskul / $totalData) * 100, 2) }}%</li>
+                    @else
+                    <li>No data available</li>
+                    @endif
+                </ul>
             </div>
         </div>
-    </section>
+        <div class="col-md-8">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+</div>
 
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</div>
+</section>
 
-    <!-- JavaScript -->
-    <script>
-        // Data for the chart from the backend
-        var chartLabels = @json($chartData['labels'] ?? []);
-        var chartData = @json($chartData['data'] ?? []);
 
-        // Create the chart
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: chartLabels,
-                datasets: [{
-                    label: 'Data Sample',
-                    data: chartData,
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
+</script>
 @endsection

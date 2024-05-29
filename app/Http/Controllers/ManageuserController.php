@@ -68,7 +68,7 @@ class ManageuserController extends Controller
         $usermanage->password =Hash::make($request['password']);
         $usermanage->save();
 
-        return redirect('/manageuser')->with('success', 'Alhamdulillah Berhasil Dibuat');
+        return redirect('/manageuser')->with('success', 'Berhasil Ditambah');
     }
 
     /**
@@ -123,7 +123,7 @@ class ManageuserController extends Controller
         // $usermanage->password =bcrypt('$request->password');
         // $usermanage->update();
 
-        return redirect('/manageuser')->with('success', 'Alhamdulillah Berhasil Dibuat');
+        return redirect('/manageuser')->with('success', ' Berhasil Diupdate');
     }
 
     /**

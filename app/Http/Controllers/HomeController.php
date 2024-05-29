@@ -43,7 +43,7 @@ class HomeController extends Controller
         public function index()
         {
             // Fetch the data for the info boxes
-            $dataPembina = Datapembina::count();
+            $dataPembina = User::where('role','Pembina')->count();
             $dataEvent = DataEvent::count();
             $dataPrestasi = DataEvent::count();
             $dataEkskul = Dataekskul::count();

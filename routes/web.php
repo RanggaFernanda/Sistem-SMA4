@@ -79,6 +79,8 @@ Route::middleware(['auth', 'ceklevel:Administrator,Siswa,Pembina'])->group(funct
 Route::middleware(['auth', 'ceklevel:Administrator,Pembina'])->group(function () {
     Route::resource('/dataekskul', DataekskulController::class);
     Route::post('/dataekskul/store', [DataekskulController::class,'store'])->name('ekskul-simpan');
+    Route::get('/dataekskul/show', [DataekskulController::class,'show']);
+  
     Route::resource('/datapembina', DatapembinaController::class);
     Route::post('/datapembina/store', [DatapembinaController::class, 'store'])->name('datapembina-simpan');
     Route::get('/absensi', [AbsensiController::class, 'showAbsensi']);
@@ -95,8 +97,8 @@ Route::middleware(['auth', 'ceklevel:Administrator,Pembina'])->group(function ()
     Route::resource('/datasiswa', DatasiswaController::class);
     Route::put('/datasiswa/acc/{id}',[DatasiswaController::class,'acc'])->name('datasiswa.acc');
     Route::post('/datasiswa/store', [DatasiswaController::class, 'store'])->name('datasiswa-simpan');
-    // Route::delete('/daftarekskul/{id}', [DaftarEkskulController::class, 'destroy'])->name('datasiswa.destroy');
-    // Route::resource('myekskul', DaftarEkskulController::class);
+    Route::delete('/daftarekskul/{id}', [DaftarEkskulController::class, 'destroy'])->name('datasiswa.destroy');
+    Route::resource('myekskul', DaftarEkskulController::class);
 
 });
 //--------------Route Siswa dan Admin Ekskul--------------//
@@ -109,6 +111,7 @@ Route::middleware(['auth', 'ceklevel:Siswa,Administrator'])->group(function () {
     Route::resource('/daftarekskul', DaftarekskulController::class);
     Route::post('/daftarekskul/store', [DaftarekskulController::class, 'store'])->name('daftarekskul-simpan');
     Route::get('/daftarekskul/create', [DaftarekskulController::class, 'create'])->name('daftarekskul.create');
+   
 Route::post('/daftarekskul', [DaftarekskulController::class, 'store'])->name('daftarekskul.store');
 
     });

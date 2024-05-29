@@ -62,7 +62,7 @@ class DataekskulController extends Controller
         // $dataekskul->jadwal_ekskul=$request->get('jadwal_ekskul');
         // $dataekskul->save();
 
-        return redirect()->route('dataekskul.index')->with('success', 'Alhamdulillah Berhasil Dibuat');
+        return redirect()->route('dataekskul.index')->with('success', 'Berhasil Ditambah');
     }
 
     /**
@@ -120,6 +120,6 @@ class DataekskulController extends Controller
     {
         $dtekskul = Dataekskul::findOrFail($id);
         $dtekskul->delete();
-        return redirect()->back()->with('success', 'Alhamdulillah Berhasil Dihapus');
+        return redirect()->back()->with('success', 'Berhasil Dihapus');
     }
 }

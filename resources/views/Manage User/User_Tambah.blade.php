@@ -30,13 +30,13 @@
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
               </div>
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label for="name">Ekskul</label>
                 <select name="nama_ekskul" id="" class="form-control">
                   <option value="">-- Pilih Ekskul -- </option>
                   @foreach ($dataekskul as $item)
                     <option value="{{ $item->nama_ekskul }}">{{ $item->nama_ekskul }}</option>
-                  @endforeach
+                  @endforeach --}}
                 </select>
               <div class="form-group">
                 <label for="password">Password</label>

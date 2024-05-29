@@ -25,6 +25,7 @@
                     <th>Hadir</th>
                     <th>Izin</th>
                     <th>Sakit</th>
+                    <th>Alpa</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +35,7 @@
                         <td><input type="radio" name="absensi[{{ $siswa->id }}]" value="hadir" required></td>
                         <td><input type="radio" name="absensi[{{ $siswa->id }}]" value="izin"></td>
                         <td><input type="radio" name="absensi[{{ $siswa->id }}]" value="sakit"></td>
+                        <td><input type="radio" name="absensi[{{ $siswa->id }}]" value="alpa"></td>
                     </tr>
                 @endforeach
             </tbody>
